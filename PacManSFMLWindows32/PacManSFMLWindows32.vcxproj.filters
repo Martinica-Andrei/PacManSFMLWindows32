@@ -18,8 +18,19 @@
     <ClCompile Include="Source.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ObiectJoc.cpp">
-      <Filter>Header Files</Filter>
+    <ClCompile Include="Joc.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ObiectJoc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Joc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ObiectJoc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

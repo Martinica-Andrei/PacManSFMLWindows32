@@ -1,10 +1,11 @@
 #include "Player.h"
 #include "Joc.h"
-Player::Player(Joc* joc) : ObiectJoc(joc, new sf::RectangleShape({50,50})) {
-	forma().setFillColor(sf::Color::Blue);
+Player::Player(Joc* joc) : ObiectJoc(joc, new sf::RectangleShape({50,50})) , _texturi({&joc->texturi.pacman_1, &joc->texturi.pacman_2}) {
+
 }
 
 void Player::miscare() {
+	_pozitieCurenta = forma().getPosition();
 	float viteza = _velocitate * _joc->timpDeLaUltimulFrame;
 
 	if (_directieCurenta == DIR::sus) {
@@ -39,4 +40,14 @@ void Player::input() {
 void Player::update() {
 	input();
 	miscare();
+	sf::Vector2f distantaTraversata = (_pozitieCurenta - forma().getPosition());
+	_distantaTraversataContor += sqrt(distantaTraversata.x * distantaTraversata.x + distantaTraversata.y * distantaTraversata.y);
+	if (_distantaTraversataContor >= _distantaTraversarePentruSchimbareTextura) {
+		_distantaTraversataContor = 0;
+		_indexTextura++;
+		if (_indexTextura == _texturi.size()) {
+			_indexTextura = 0;
+		}
+		forma().setTexture(_texturi[_indexTextura]);
+	}
 }

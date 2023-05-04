@@ -4,6 +4,7 @@
 Joc::Joc() {
     _ecran->setFramerateLimit(frameratePeSecunda);
     player = new Player(this);
+
     obiecte.push_back(player);
 }
 
@@ -40,7 +41,6 @@ void Joc::start() {
         desenare();
     }
 }
-#include <iostream>
 void Joc::update() {
     for (int i = 0; i < obiecte.size(); i++) {
         obiecte[i]->update();

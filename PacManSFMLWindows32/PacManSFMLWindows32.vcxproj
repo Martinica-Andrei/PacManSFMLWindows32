@@ -81,7 +81,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>opengl32.lib;flac.lib;freetype.lib;ogg.lib;openal32.lib;sfml-audio.lib;sfml-graphics.lib;sfml-window.lib;sfml-system.lib;sfml-main.lib;sfml-network.lib;vorbis.lib;vorbisenc.lib;vorbisfile.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;flac.lib;freetype.lib;ogg.lib;openal32.lib;sfml-audio-d.lib;sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-main-d.lib;sfml-network-d.lib;vorbis.lib;vorbisenc.lib;vorbisfile.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)\SFML_Windows\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
@@ -115,7 +115,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>opengl32.lib;flac.lib;freetype.lib;ogg.lib;openal32.lib;sfml-audio.lib;sfml-graphics.lib;sfml-window.lib;sfml-system.lib;sfml-main.lib;sfml-network.lib;vorbis.lib;vorbisenc.lib;vorbisfile.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;flac.lib;freetype.lib;ogg.lib;openal32.lib;sfml-audio-d.lib;sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-main-d.lib;sfml-network-d.lib;vorbis.lib;vorbisenc.lib;vorbisfile.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)\SFML_Windows\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
@@ -144,6 +144,7 @@
     <ClCompile Include="ObiectJoc.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="Texturi.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animatie.h" />
@@ -151,6 +152,7 @@
     <ClInclude Include="Joc.h" />
     <ClInclude Include="ObiectJoc.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Texturi.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

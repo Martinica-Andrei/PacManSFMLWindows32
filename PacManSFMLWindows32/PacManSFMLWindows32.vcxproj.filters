@@ -30,6 +30,9 @@
     <ClCompile Include="Animatie.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Texturi.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Joc.h">
@@ -45,6 +48,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Animatie.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Texturi.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

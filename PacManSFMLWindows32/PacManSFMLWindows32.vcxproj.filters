@@ -24,12 +24,21 @@
     <ClCompile Include="ObiectJoc.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Joc.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ObiectJoc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Constante.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

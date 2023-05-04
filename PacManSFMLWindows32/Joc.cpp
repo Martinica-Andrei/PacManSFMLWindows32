@@ -1,13 +1,20 @@
 #include "Joc.h"
 #include "ObiectJoc.h"
+#include "Player.h"
 Joc::Joc() {
     _ecran->setFramerateLimit(75);
+    player = new Player(this);
+    obiecte.push_back(player);
 }
-ObiectJoc* test;
+
+Joc::~Joc() {
+    delete _ecran;
+    for (auto& obiect : obiecte) {
+        delete obiect;
+    }
+}
+
 void Joc::start() {
-    test = new ObiectJoc(this, new sf::RectangleShape({ 100, 100 }));
-    test->forma().setFillColor(sf::Color::Blue);
-    test->forma().setPosition(300, 200);
 
     while (_ecran->isOpen())
     {
@@ -23,10 +30,15 @@ void Joc::start() {
 }
 
 void Joc::update() {
+    for (int i = 0; i < obiecte.size(); i++) {
+        obiecte[i]->update();
+    }
 
 }
 void Joc::desenare() {
     _ecran->clear();
-    test->desenare();
+    for (int i = 0; i < obiecte.size(); i++) {
+        obiecte[i]->desenare();
+    }
     _ecran->display();
 }

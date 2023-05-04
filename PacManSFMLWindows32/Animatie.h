@@ -26,4 +26,5 @@ public:
 	}
 
 	void reset();
+	void adaugareContor(float valoare);
 };

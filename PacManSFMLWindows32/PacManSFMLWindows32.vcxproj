@@ -142,6 +142,7 @@
     <ClCompile Include="Animatie.cpp" />
     <ClCompile Include="Joc.cpp" />
     <ClCompile Include="ObiectJoc.cpp" />
+    <ClCompile Include="Perete.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Texturi.cpp" />
@@ -151,6 +152,7 @@
     <ClInclude Include="Constante.h" />
     <ClInclude Include="Joc.h" />
     <ClInclude Include="ObiectJoc.h" />
+    <ClInclude Include="Perete.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Texturi.h" />
   </ItemGroup>

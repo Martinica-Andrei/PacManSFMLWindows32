@@ -5,7 +5,7 @@ Player::Player(Joc* joc) : ObiectJoc(joc, new sf::RectangleShape({ 1,1 })),
 _animatie(joc, { &joc->texturi.pacman_1, &joc->texturi.pacman_2 }, 25) {
 	forma().setScale(40, 40);
 	forma().setOrigin(0.5, 0.5);
-	forma().move(25, 25);
+	forma().move(20, 20);
 	forma().setTexture(_animatie.texturaCurenta());
 }
 

@@ -23,8 +23,20 @@ void Joc::start() {
             if (event.type == sf::Event::Closed)
                 _ecran->close();
         }
-        timpDeLaUltimulFrame = ceas.restart().asSeconds();
-        update();
+        float timpDeLaUltimulFrameTotal = ceas.restart().asSeconds();
+        // sa zicem ca jocul da freeze si trece o secunda, daca nu facem acest loop
+        // atunci oricare obiect care se misca folosind timpul, se va teleporta fara a verifica coliziuni
+        while (timpDeLaUltimulFrameTotal >= 0) {
+            if (timpDeLaUltimulFrameTotal <= _milisecundePeFrame) {
+                timpDeLaUltimulFrame = timpDeLaUltimulFrameTotal;
+                timpDeLaUltimulFrameTotal = -1;
+            }
+            else {
+                timpDeLaUltimulFrameTotal -= _milisecundePeFrame;
+                timpDeLaUltimulFrame = _milisecundePeFrame;
+            }
+            update();
+        }
         desenare();
     }
 }

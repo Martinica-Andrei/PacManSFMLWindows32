@@ -139,12 +139,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Animatie.cpp" />
     <ClCompile Include="Joc.cpp" />
     <ClCompile Include="ObiectJoc.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Animatie.h" />
     <ClInclude Include="Constante.h" />
     <ClInclude Include="Joc.h" />
     <ClInclude Include="ObiectJoc.h" />

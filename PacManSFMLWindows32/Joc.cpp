@@ -2,7 +2,7 @@
 #include "ObiectJoc.h"
 #include "Player.h"
 Joc::Joc() {
-    _ecran->setFramerateLimit(75);
+    _ecran->setFramerateLimit(frameratePeSecunda);
     player = new Player(this);
     obiecte.push_back(player);
 }
@@ -13,9 +13,8 @@ Joc::~Joc() {
         delete obiect;
     }
 }
-
 void Joc::start() {
-
+    sf::Clock ceas;
     while (_ecran->isOpen())
     {
         sf::Event event;
@@ -24,15 +23,17 @@ void Joc::start() {
             if (event.type == sf::Event::Closed)
                 _ecran->close();
         }
+        timpDeLaUltimulFrame = ceas.restart().asSeconds();
         update();
         desenare();
     }
 }
-
+#include <iostream>
 void Joc::update() {
     for (int i = 0; i < obiecte.size(); i++) {
         obiecte[i]->update();
     }
+
 
 }
 void Joc::desenare() {

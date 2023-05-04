@@ -4,8 +4,9 @@
 class Joc;
 class ObiectJoc {
 private:
-	Joc* _joc;
 	sf::Shape* _forma; // pointer unic , fiecare obiect in parte are propria lui forma
+protected:
+	Joc* _joc;
 public:
 
 	virtual ~ObiectJoc() {
@@ -21,4 +22,5 @@ public:
 	void desenare();
 	
 	virtual void update() {}
+
 };

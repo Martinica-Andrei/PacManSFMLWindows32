@@ -4,9 +4,8 @@
 class Player : public ObiectJoc {
 private:
 	DIR _directieCurenta = DIR::null;
-	float _velocitate = 30.f;
 public:
-
+	float _velocitate = 200.f;
 	Player(Joc* joc);
 	void miscare();
 	void input();

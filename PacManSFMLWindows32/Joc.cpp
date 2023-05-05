@@ -1,10 +1,14 @@
 #include "Joc.h"
 #include "ObiectJoc.h"
 #include "Player.h"
+#include "JsonParser.h"
 Joc::Joc() {
     _ecran->setFramerateLimit(frameratePeSecunda);
     player = new Player(this);
-
+   // parseJson("data\\harta.tmj");
+    auto test = parseJson("data\\test.txt");
+    string varsta = test->copii["age"]->data;
+    string masina = test->copii["car"]->data;
     obiecte.push_back(player);
 }
 

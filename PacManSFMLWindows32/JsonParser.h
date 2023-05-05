@@ -2,13 +2,14 @@
 #include <unordered_map>
 #include <vector>
 #include <string>
+// folosesc tiled pentru harta, si am nevoie de json
 using namespace std;
 class CopacJson {
 public:
 	unordered_map<string, CopacJson*> copii;
-	vector<string> data;
+	vector<CopacJson*> copiiVec;
+	string data;
 
-	CopacJson* operator[](const string& str);
 	~CopacJson();
 };
 

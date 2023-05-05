@@ -7,6 +7,7 @@ _animatie(joc, { &joc->texturi.pacman_1, &joc->texturi.pacman_2 }, 25) {
 	forma().setOrigin(0.5, 0.5);
 	forma().move(20, 20);
 	forma().setTexture(_animatie.texturaCurenta());
+	forma().setRotation(270);
 }
 
 void Player::miscare() {

@@ -141,20 +141,24 @@
   <ItemGroup>
     <ClCompile Include="Animatie.cpp" />
     <ClCompile Include="Joc.cpp" />
+    <ClCompile Include="JsonParser.cpp" />
     <ClCompile Include="ObiectJoc.cpp" />
     <ClCompile Include="Perete.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Texturi.cpp" />
+    <ClCompile Include="Tiled.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animatie.h" />
     <ClInclude Include="Constante.h" />
     <ClInclude Include="Joc.h" />
+    <ClInclude Include="JsonParser.h" />
     <ClInclude Include="ObiectJoc.h" />
     <ClInclude Include="Perete.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Texturi.h" />
+    <ClInclude Include="Tiled.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

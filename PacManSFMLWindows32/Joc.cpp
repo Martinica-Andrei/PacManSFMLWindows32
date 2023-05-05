@@ -1,32 +1,14 @@
 #include "Joc.h"
 #include "ObiectJoc.h"
 #include "Player.h"
-#include "Tiled.h"
-#include "Perete.h"
+#include "Harta.h"
+
 Joc::Joc() {
     _ecran->setFramerateLimit(frameratePeSecunda);
     player = new Player(this);
+    player->forma().setPosition(185, 200);
     obiecte.push_back(player);
-    Tiled harta("data\\harta.tmj");
-    int inaltime = stoi(harta.json()["height"].data);
-    int lungime = stoi(harta.json()["width"].data);
-    int marimePixel = 25;
-    for (int r = 0; r < inaltime; r++) {
-        for (int c = 0; c < lungime; c++) {
-            int v = harta.data[r * lungime + c];
-            if (v == 0) {
-                continue;
-            }
-            v--;
-            int texturaRand = v / 16;
-            int texturaColoana = v % 16;
-            const sf::Texture* textura = &texturi.harta[texturaRand][texturaColoana];
-            Perete* perete = new Perete(this, textura);
-            obiecte.push_back(perete);
-            perete->forma().setPosition(c * 28.57, r * 25.8);
-            perete->forma().setScale(28.57, 25.8);
-        }
-    }
+    obiecte.push_back(new Harta(this));
 }
 
 Joc::~Joc() {

@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Animatie.cpp" />
+    <ClCompile Include="Harta.cpp" />
     <ClCompile Include="Joc.cpp" />
     <ClCompile Include="JsonParser.cpp" />
     <ClCompile Include="ObiectJoc.cpp" />
@@ -152,6 +153,7 @@
   <ItemGroup>
     <ClInclude Include="Animatie.h" />
     <ClInclude Include="Constante.h" />
+    <ClInclude Include="Harta.h" />
     <ClInclude Include="Joc.h" />
     <ClInclude Include="JsonParser.h" />
     <ClInclude Include="ObiectJoc.h" />

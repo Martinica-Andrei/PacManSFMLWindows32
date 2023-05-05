@@ -1,5 +1,4 @@
 #pragma once
-
 #include <SFML/Graphics.hpp>
 class Joc;
 class ObiectJoc {
@@ -19,7 +18,7 @@ public:
 		return *_forma;
 	}
 
-	void desenare();
+	virtual void desenare();
 	
 	virtual void update() {}
 

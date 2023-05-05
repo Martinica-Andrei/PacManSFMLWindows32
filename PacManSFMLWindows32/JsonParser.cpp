@@ -44,9 +44,12 @@ namespace {
 
 	void _parseArray(string& jsonString, CopacJson* nod, int& index) {
 		while (index < jsonString.size()) {			
-			if (jsonString[index] == ']' || jsonString[index] == ',') {
+			if (jsonString[index] == ']') {
 				index++;
 				break;
+			}
+			if (jsonString[index] == ',') {
+				index++;
 			}
 			if (jsonString[index] == '[') {
 				index++;
@@ -83,7 +86,6 @@ namespace {
 				index++;
 				break;
 			}
-		//	if(jsonString[index] == ']')
 			if (jsonString[index] == '\"') {
 				index++;
 				CopacJson* nodNou = _parseCheie(jsonString, nod, index);
@@ -133,4 +135,12 @@ CopacJson* parseJson(const string& numeFisier) {
 		fisier.close();
 	}
 	return copacJson;
+}
+
+CopacJson& CopacJson::operator[](const string& str) {
+	return *copii[str];
+}
+
+CopacJson& CopacJson::operator[](int index) {
+	return *copiiVec[index];
 }

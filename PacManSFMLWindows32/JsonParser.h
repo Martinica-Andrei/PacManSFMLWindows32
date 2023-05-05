@@ -13,8 +13,10 @@ public:
 	~CopacJson();
 	CopacJson() = default;
 	CopacJson(const string& data) : data(data) {
-
 	}
+
+	CopacJson& operator[](const string& str);
+	CopacJson& operator[](int index);
 };
 
 CopacJson* parseJson(const string& numeFisier);

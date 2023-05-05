@@ -2,10 +2,13 @@
 #include "ObiectJoc.h"
 #include "Player.h"
 #include "JsonParser.h"
+#include <iostream>
 Joc::Joc() {
     _ecran->setFramerateLimit(frameratePeSecunda);
     player = new Player(this);
     auto test = parseJson("data\\harta.tmj");
+    string t = ((*test)["layers"])[0]["data"].data;
+    std::cout << t << '\n';
     obiecte.push_back(player);
 }
 

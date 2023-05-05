@@ -5,10 +5,7 @@
 Joc::Joc() {
     _ecran->setFramerateLimit(frameratePeSecunda);
     player = new Player(this);
-   // parseJson("data\\harta.tmj");
-    auto test = parseJson("data\\test.txt");
-    string varsta = test->copii["age"]->data;
-    string masina = test->copii["car"]->data;
+    auto test = parseJson("data\\harta.tmj");
     obiecte.push_back(player);
 }
 

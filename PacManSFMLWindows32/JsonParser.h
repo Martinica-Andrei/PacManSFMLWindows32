@@ -11,6 +11,10 @@ public:
 	string data;
 
 	~CopacJson();
+	CopacJson() = default;
+	CopacJson(const string& data) : data(data) {
+
+	}
 };
 
 CopacJson* parseJson(const string& numeFisier);

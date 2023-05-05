@@ -3,5 +3,10 @@
         {
          "firstgid":1,
          "source":"harta.tsx"
-        }]
+        },
+{
+		"two" : "two",
+		"three": 3
+}
+]
 }

@@ -3,5 +3,5 @@
 class Perete : public ObiectJoc {
 private:
 public:
-	Perete(Joc* joc);
+	Perete(Joc* joc, const sf::Texture* textura);
 };

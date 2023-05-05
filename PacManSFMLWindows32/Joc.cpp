@@ -1,15 +1,32 @@
 #include "Joc.h"
 #include "ObiectJoc.h"
 #include "Player.h"
-#include "JsonParser.h"
-#include <iostream>
+#include "Tiled.h"
+#include "Perete.h"
 Joc::Joc() {
     _ecran->setFramerateLimit(frameratePeSecunda);
     player = new Player(this);
-    auto test = parseJson("data\\harta.tmj");
-    string t = ((*test)["layers"])[0]["data"].data;
-    std::cout << t << '\n';
     obiecte.push_back(player);
+    Tiled harta("data\\harta.tmj");
+    int inaltime = stoi(harta.json()["height"].data);
+    int lungime = stoi(harta.json()["width"].data);
+    int marimePixel = 25;
+    for (int r = 0; r < inaltime; r++) {
+        for (int c = 0; c < lungime; c++) {
+            int v = harta.data[r * lungime + c];
+            if (v == 0) {
+                continue;
+            }
+            v--;
+            int texturaRand = v / 16;
+            int texturaColoana = v % 16;
+            const sf::Texture* textura = &texturi.harta[texturaRand][texturaColoana];
+            Perete* perete = new Perete(this, textura);
+            obiecte.push_back(perete);
+            perete->forma().setPosition(c * 28.57, r * 25.8);
+            perete->forma().setScale(28.57, 25.8);
+        }
+    }
 }
 
 Joc::~Joc() {

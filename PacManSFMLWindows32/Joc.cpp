@@ -1,14 +1,14 @@
 #include "Joc.h"
 #include "ObiectJoc.h"
 #include "Player.h"
-#include "Harta.h"
 
 Joc::Joc() {
     _ecran->setFramerateLimit(frameratePeSecunda);
     player = new Player(this);
-    player->forma().setPosition(185, 200);
+    player->forma().setPosition(190, 200);
     obiecte.push_back(player);
-    obiecte.push_back(new Harta(this));
+    harta = new Harta(this);
+    obiecte.push_back(harta);
 }
 
 Joc::~Joc() {
@@ -48,7 +48,6 @@ void Joc::update() {
     for (int i = 0; i < obiecte.size(); i++) {
         obiecte[i]->update();
     }
-
 
 }
 void Joc::desenare() {

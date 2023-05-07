@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include "Texturi.h"
+#include "Harta.h"
 class ObiectJoc;
 class Player;
 class Joc {
@@ -10,6 +11,7 @@ private:
 	int frameratePeSecunda = 75;
 	float _milisecundePeFrame = 1.f / frameratePeSecunda;
 public:
+	Harta* harta;
 	const Texturi texturi;
 	std::vector<ObiectJoc*> obiecte;
 	float timpDeLaUltimulFrame = 0;

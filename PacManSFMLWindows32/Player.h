@@ -8,6 +8,8 @@ private:
 	Animatie _animatie;
 	sf::Vector2f _pozitieCurenta;
 public:
+	float destinatie;
+	bool eAjunsLaDestinatie = false;
 	float _velocitate = 200.f;
 	Player(Joc* joc);
 	void miscare();

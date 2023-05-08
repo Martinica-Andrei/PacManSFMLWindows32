@@ -44,6 +44,8 @@ void Player::miscare() {
 		rand = _joc->harta->iaRand(pos.y + _joc->harta->inaltimePeRand() / 2);
 		coloana = _joc->harta->iaColoana(pos.x);
 		if (rand == _destinatie.y && coloana == _destinatie.x) {
+			forma().setPosition(_joc->harta->iaCoordonataColoana(coloana) + _joc->harta->lungimePeColoana() / 2,
+				_joc->harta->iaCoordonataRand(rand) + _joc->harta->inaltimePeRand() / 2);
 			_destinatie.y--;
 		}
 	}
@@ -51,6 +53,8 @@ void Player::miscare() {
 		rand = _joc->harta->iaRand(pos.y);
 		coloana = _joc->harta->iaColoana(pos.x - _joc->harta->lungimePeColoana() / 2);
 		if (rand == _destinatie.y && coloana == _destinatie.x) {
+			forma().setPosition(_joc->harta->iaCoordonataColoana(coloana) + _joc->harta->lungimePeColoana() / 2,
+				_joc->harta->iaCoordonataRand(rand) + _joc->harta->inaltimePeRand() / 2);
 			_destinatie.x++;
 		}
 	}
@@ -58,6 +62,8 @@ void Player::miscare() {
 		rand = _joc->harta->iaRand(pos.y - _joc->harta->inaltimePeRand() / 2);
 		coloana = _joc->harta->iaColoana(pos.x);
 		if (rand == _destinatie.y && coloana == _destinatie.x) {
+			forma().setPosition(_joc->harta->iaCoordonataColoana(coloana) + _joc->harta->lungimePeColoana() / 2,
+				_joc->harta->iaCoordonataRand(rand) + _joc->harta->inaltimePeRand() / 2);
 			_destinatie.y++;
 		}
 	}
@@ -65,6 +71,8 @@ void Player::miscare() {
 		rand = _joc->harta->iaRand(pos.y);
 		coloana = _joc->harta->iaColoana(pos.x + _joc->harta->lungimePeColoana() / 2);
 		if (rand == _destinatie.y && coloana == _destinatie.x) {
+			forma().setPosition(_joc->harta->iaCoordonataColoana(coloana) + _joc->harta->lungimePeColoana() / 2,
+				_joc->harta->iaCoordonataRand(rand) + _joc->harta->inaltimePeRand() / 2);
 			_destinatie.x--;
 		}
 	}

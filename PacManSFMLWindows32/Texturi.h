@@ -10,6 +10,7 @@ public:
 
 	sf::Texture pacman_1;
 	sf::Texture pacman_2;
+	sf::Texture cutieColiziune;
 	std::vector<std::vector<sf::Texture>> harta;
 
 	Texturi();

@@ -3,6 +3,7 @@
 Texturi::Texturi() {
 	pacman_1.loadFromFile("data\\pacman_1.png");
 	pacman_2.loadFromFile("data\\pacman_2.png");
+	cutieColiziune.loadFromFile("data\\debug\\cutie_coliziune.png");
 	harta = incarcareAtlas("data\\harta.png", 3, 16, 8, 8, 1);
 }
 

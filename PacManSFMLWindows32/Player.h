@@ -7,6 +7,8 @@ private:
 	DIR _directieCurenta = DIR::null;
 	Animatie _animatie;
 	sf::Vector2f _pozitieCurenta;
+	int _rand = 0;
+	int _coloana = 0;
 public:
 	float destinatie;
 	bool eAjunsLaDestinatie = false;

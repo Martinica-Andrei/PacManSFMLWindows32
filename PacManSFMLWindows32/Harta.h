@@ -9,6 +9,7 @@ private:
 	int _coloane;
 	float _lungimePeColoana;
 	float _inaltimePeRand; 
+	float _startY = 80;
 
 public:
 	std::vector<std::vector<ObiectJoc*>> matrice;
@@ -26,25 +27,21 @@ public:
 	}
 
 	int iaRand(float y) {
-		return y / _inaltimePeRand;
+		return (y - _startY) / _inaltimePeRand;
 	}
 	int iaColoana(float x) {
 		return x /_lungimePeColoana;
 	}
 
-	float iaCoordonataColoana(int coloana) {
+	float iaCoordonataColoana(unsigned int coloana) {
 		return coloana * _lungimePeColoana;
 	}
 
-	float iaCoordonataRand(int rand) {
-		return rand * _inaltimePeRand;
+	float iaCoordonataRand(unsigned int rand) {
+		return rand * _inaltimePeRand + _startY;
 	}
 
-	sf::Vector2f iaCoordonata(int rand, int coloana) {
-		return { rand * _inaltimePeRand ,coloana * _lungimePeColoana };
-	}
-
-	ObiectJoc* iaObiect(float x, float y);
+	ObiectJoc* iaObiect(unsigned int rand, unsigned int coloana);
 	enum class arieUnuIndici {
 		centru = 0,
 		sus = 1,

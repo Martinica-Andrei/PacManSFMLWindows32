@@ -6,6 +6,11 @@ Texturi::Texturi() {
 	cutieColiziune.loadFromFile("data\\debug\\cutie_coliziune.png");
 	background.loadFromFile("data\\background.png");
 	harta = incarcareAtlas("data\\harta.png", 3, 16, 8, 8, 1);
+
+	monstruRosu = incarcareAtlas("data\\monstrii\\rosu.png", 1, 8, 14, 14, 2);
+	monstruRoz = incarcareAtlas("data\\monstrii\\roz.png", 1, 8, 14, 14, 2);
+	monstruAlbastru = incarcareAtlas("data\\monstrii\\albastru.png", 1, 8, 14, 14, 2);
+	monstruGalben = incarcareAtlas("data\\monstrii\\galben.png", 1, 8, 14, 14, 2);
 }
 
 std::vector<std::vector<sf::Texture>> Texturi::incarcareAtlas(const std::string& numeFisier, int randuri, int coloane, int lungime, int inaltime, int spatiu){

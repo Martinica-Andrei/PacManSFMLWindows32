@@ -6,7 +6,7 @@ void Animatie::update() {
 	if (_contorSecunde >= secundePeFrame) {
 		_contorSecunde = 0;
 		_indexCurent++;
-		if (_indexCurent == _texturi.size()) {
+		if (_indexCurent == texturi.size()) {
 			_indexCurent = 0;
 		}
 	}
@@ -22,7 +22,7 @@ void Animatie::adaugareContor(float valoare) {
 	if (_contorSecunde >= secundePeFrame) {
 		_contorSecunde = 0;
 		_indexCurent++;
-		if (_indexCurent == _texturi.size()) {
+		if (_indexCurent == texturi.size()) {
 			_indexCurent = 0;
 		}
 	}

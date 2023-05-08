@@ -6,9 +6,10 @@
 class Player : public Entitate {
 private:
 	Animatie _animatie;
+	sf::Vector2f _pozitieCurenta;
 public:
 	Player(Joc* joc);
-	void miscare() override;
+	void miscare();
 	void input();
 	void update() override;
 };

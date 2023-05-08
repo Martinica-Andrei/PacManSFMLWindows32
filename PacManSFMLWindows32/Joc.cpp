@@ -1,18 +1,26 @@
 #include "Joc.h"
 #include "ObiectJoc.h"
 #include "Player.h"
-
+#include "Monstru.h"
 Joc::Joc() {
     _ecran->setFramerateLimit(frameratePeSecunda);
- /*   const auto& ecranMarime = _ecran->getSize();
-    ObiectJoc* background = new ObiectJoc(this, new sf::RectangleShape({ 1,1 }));
-    background->forma().setScale(ecranMarime.x, ecranMarime.y);
-    background->forma().setTexture(&texturi.background);
-    obiecte.push_back(background);*/
     harta = new Harta(this);
     obiecte.push_back(harta);
     player = new Player(this);
     obiecte.push_back(player);
+    Monstru* albastru = new Monstru(this, Monstru::TIP_MONSTRU::albastru);
+    albastru->forma().setPosition(320, 370);
+    Monstru* roz = new Monstru(this, Monstru::TIP_MONSTRU::roz);
+    roz->forma().setPosition(380, 375);
+    Monstru* galben = new Monstru(this, Monstru::TIP_MONSTRU::galben);
+    galben->forma().setPosition(440, 370);
+    Monstru* rosu = new Monstru(this, Monstru::TIP_MONSTRU::rosu);
+    rosu->forma().setPosition(320, 310);
+    obiecte.push_back(albastru);
+    obiecte.push_back(roz);
+    obiecte.push_back(galben);
+    obiecte.push_back(rosu);
+    
 }
 
 Joc::~Joc() {

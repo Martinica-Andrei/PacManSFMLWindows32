@@ -7,10 +7,13 @@ private:
 	Joc* _joc;
 	float _contorSecunde = 0;
 	int _indexCurent = 0;
-	std::vector<const sf::Texture*> texturi;
 public:
 	float secundePeFrame = 0;
+	std::vector<const sf::Texture*> texturi;
 
+	Animatie(Joc* joc) : _joc(joc) {
+
+	}
 	// dau pass by value vectorul deoarece e mic
 	Animatie(Joc* joc, std::vector<const sf::Texture*> texturi) : _joc(joc), texturi(texturi) {
 

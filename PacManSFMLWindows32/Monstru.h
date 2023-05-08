@@ -8,6 +8,11 @@ private:
 	Animatie _animatieJos;
 	Animatie _animatieStanga;
 public:
-
-	Monstru(Joc* joc);
+	enum class TIP_MONSTRU {
+		albastru=0,
+		roz=1,
+		galben=2,
+		rosu=3
+	};
+	Monstru(Joc* joc, TIP_MONSTRU tipMonstru);
 };

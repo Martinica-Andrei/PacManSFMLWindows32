@@ -9,9 +9,8 @@ private:
 	sf::Vector2f _pozitieCurenta;
 	int _rand = 0;
 	int _coloana = 0;
+	sf::Vector2i _destinatie;
 public:
-	float destinatie;
-	bool eAjunsLaDestinatie = false;
 	float _velocitate = 200.f;
 	Player(Joc* joc);
 	void miscare();

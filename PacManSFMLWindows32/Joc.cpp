@@ -7,8 +7,6 @@ Joc::Joc() {
     harta = new Harta(this);
     obiecte.push_back(harta);
     player = new Player(this);
-    player->forma().setPosition(185, 185);
-    player->destinatie = 185;
     obiecte.push_back(player);
 }
 

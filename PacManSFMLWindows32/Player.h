@@ -5,6 +5,8 @@
 class Player : public ObiectJoc {
 private:
 	DIR _directieCurenta = DIR::null;
+	const sf::Vector2f& _pos;
+	const sf::Vector2f& _scale;
 	Animatie _animatie;
 	sf::Vector2f _pozitieCurenta;
 	int _rand = 0;

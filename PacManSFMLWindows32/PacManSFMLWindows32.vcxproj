@@ -145,6 +145,7 @@
     <ClCompile Include="Harta.cpp" />
     <ClCompile Include="Joc.cpp" />
     <ClCompile Include="JsonParser.cpp" />
+    <ClCompile Include="Mancare.cpp" />
     <ClCompile Include="ObiectJoc.cpp" />
     <ClCompile Include="Perete.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -160,6 +161,7 @@
     <ClInclude Include="Harta.h" />
     <ClInclude Include="Joc.h" />
     <ClInclude Include="JsonParser.h" />
+    <ClInclude Include="Mancare.h" />
     <ClInclude Include="ObiectJoc.h" />
     <ClInclude Include="Perete.h" />
     <ClInclude Include="Player.h" />

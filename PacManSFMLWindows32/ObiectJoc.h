@@ -5,13 +5,14 @@ enum class TIPURI_OBIECTE {
 	perete = 0,
 };
 class Joc;
+class Player;
 class ObiectJoc {
 private:
 	sf::Shape* _forma; // pointer unic , fiecare obiect in parte are propria lui forma
 protected:
 	Joc* _joc;
 public:
-
+	bool eSters = false;
 	virtual ~ObiectJoc() {
 		delete _forma;
 	}
@@ -27,5 +28,7 @@ public:
 	virtual TIPURI_OBIECTE tipObiect() {
 		return TIPURI_OBIECTE::nimic;
 	}
+
+	virtual void coliziune(Player& player){}
 };
 

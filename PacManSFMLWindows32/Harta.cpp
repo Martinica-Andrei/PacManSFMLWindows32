@@ -1,20 +1,20 @@
 #include "Harta.h"
 #include "Joc.h"
 #include "Perete.h"
-#include "CutieColiziune.h"
+#include "Mancare.h"
 Harta::Harta(Joc* joc) : ObiectJoc(joc, new sf::CircleShape()), _tiledHarta("data\\harta.tmj") {
 	_randuri = stoi(_tiledHarta.json()["height"].data);
 	_coloane = stoi(_tiledHarta.json()["width"].data);
 	auto marimeEcran = joc->ecran()->getSize();
 	_lungimePeColoana = marimeEcran.x / float(_coloane);
-	_inaltimePeRand = (marimeEcran.y - _startY) / float(_randuri);
+	_inaltimePeRand = (marimeEcran.y - _startY - 45) / float(_randuri);
     for (int r = 0; r < _randuri; r++) {
         matrice.push_back({});
         for (int c = 0; c < _coloane; c++) {
             int v = _tiledHarta.data[r * _coloane + c];
             if (v == 0) {
                 matrice[r].push_back(nullptr);
-             /*   CutieColiziune* cutieColiziune = new CutieColiziune(joc);
+           /*     CutieColiziune* cutieColiziune = new CutieColiziune(joc);
                 cutieColiziune->forma().setPosition(c * _lungimePeColoana, r * _inaltimePeRand + _startY);
                 cutieColiziune->forma().setScale(_lungimePeColoana, _inaltimePeRand);
                 cutieColiziune->forma().setFillColor(sf::Color::White);
@@ -25,19 +25,35 @@ Harta::Harta(Joc* joc) : ObiectJoc(joc, new sf::CircleShape()), _tiledHarta("dat
             int texturaRand = v / 16;
             int texturaColoana = v % 16;
             const sf::Texture* textura = &joc->texturi.harta[texturaRand][texturaColoana];
-            Perete* perete = new Perete(joc, textura);
-            matrice[r].push_back(perete);
-            perete->forma().setPosition(c * _lungimePeColoana, r * _inaltimePeRand + _startY);
-            perete->forma().setScale(_lungimePeColoana, _inaltimePeRand);
+            ObiectJoc* obiect;
+            if (v < 45) {
+                obiect = new Perete(joc, textura);
+            }
+            else {
+                obiect = new Mancare(joc);
+                obiect->forma().setTexture(textura);
+            }
+            matrice[r].push_back(obiect);
+            obiect->forma().setPosition(c * _lungimePeColoana, r * _inaltimePeRand + _startY);
+            obiect->forma().setScale(_lungimePeColoana, _inaltimePeRand);
         }
     }
 }
 
 void Harta::update() {
     for (int r = 0; r < _randuri; r++) {
-        for (int c = 0; c < _coloane; c++) {
-            if (matrice[r][c] == nullptr)continue;
-            matrice[r][c]->update();
+        for (int c = 0; c < _coloane;c++) {
+            ObiectJoc* obiect = matrice[r][c];
+            if (obiect == nullptr) {
+                continue;
+            }
+            if (obiect->eSters) {
+                delete obiect;
+                matrice[r][c] = nullptr;
+            }
+            else {
+                obiect->update();
+            }
         }
     }
 }

@@ -2,12 +2,12 @@
 #include "Joc.h"
 #include <iostream>
 Player::Player(Joc* joc) : ObiectJoc(joc, new sf::RectangleShape({ 1,1 })),
-_animatie(joc, { &joc->texturi.pacman_1, &joc->texturi.pacman_2 }, 25) {
-	forma().setScale(40, 40);
+_animatie(joc, { &joc->texturi.pacman_1, &joc->texturi.pacman_2 }, 25), _pos(forma().getPosition()), _scale(forma().getScale()) {
+	forma().setScale(38, 38);
 	forma().setOrigin(0.5, 0.5);
 	forma().setTexture(_animatie.texturaCurenta());
 	forma().setRotation(270);
-	sf::Vector2f pozitie = { 185, 185 };
+	sf::Vector2f pozitie = { 400, 585 };
 	forma().setPosition(pozitie);
 	_rand = joc->harta->iaRand(pozitie.y);
 	_coloana = joc->harta->iaColoana(pozitie.x);
@@ -107,5 +107,10 @@ void Player::update() {
 	sf::Vector2f distantaTraversata = (_pozitieCurenta - forma().getPosition());
 	_animatie.adaugareContor(abs(distantaTraversata.x) + abs(distantaTraversata.y));
 	forma().setTexture(_animatie.texturaCurenta());
+
+	ObiectJoc* centru = _joc->harta->iaObiect(_rand, _coloana);
+	if (centru != nullptr) {
+		centru->coliziune(*this);
+	}
 
 }

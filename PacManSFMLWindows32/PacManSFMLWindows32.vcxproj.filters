@@ -51,6 +51,9 @@
     <ClCompile Include="CutieColiziune.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Mancare.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Joc.h">
@@ -87,6 +90,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CutieColiziune.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Mancare.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

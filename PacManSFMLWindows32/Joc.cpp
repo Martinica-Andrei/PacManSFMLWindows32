@@ -4,6 +4,11 @@
 
 Joc::Joc() {
     _ecran->setFramerateLimit(frameratePeSecunda);
+ /*   const auto& ecranMarime = _ecran->getSize();
+    ObiectJoc* background = new ObiectJoc(this, new sf::RectangleShape({ 1,1 }));
+    background->forma().setScale(ecranMarime.x, ecranMarime.y);
+    background->forma().setTexture(&texturi.background);
+    obiecte.push_back(background);*/
     harta = new Harta(this);
     obiecte.push_back(harta);
     player = new Player(this);
@@ -44,8 +49,16 @@ void Joc::start() {
     }
 }
 void Joc::update() {
-    for (int i = 0; i < obiecte.size(); i++) {
-        obiecte[i]->update();
+    for (int i = 0; i < obiecte.size();) {
+        ObiectJoc* obiect = obiecte[i];
+        if (obiect->eSters == true) {
+            delete obiect;
+            obiecte.erase(obiecte.begin() + i);
+        }
+        else {
+            obiect->update();
+            i++;
+        }
     }
 
 }

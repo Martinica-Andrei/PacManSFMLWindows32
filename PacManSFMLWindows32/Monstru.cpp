@@ -36,25 +36,29 @@ Monstru::Monstru(Joc* joc, TIP_MONSTRU tipMonstru) : Entitate(joc), _animatieSus
 }
 
 void Monstru::updateAnimatie() {
-	if (_directieCurenta == DIR::sus) {
+	if (directieCurenta() == DIR::sus) {
 		_animatieSus.update();
 		forma().setTexture(_animatieSus.texturaCurenta());
 	}
-	else if (_directieCurenta == DIR::dreapta) {
+	else if (directieCurenta() == DIR::dreapta) {
 		_animatieDreapta.update();
 		forma().setTexture(_animatieDreapta.texturaCurenta());
 	}
-	else if (_directieCurenta == DIR::jos) {
+	else if (directieCurenta() == DIR::jos) {
 		_animatieJos.update();
 		forma().setTexture(_animatieJos.texturaCurenta());
 	}
-	else if (_directieCurenta == DIR::stanga) {
+	else if (directieCurenta() == DIR::stanga) {
 		_animatieStanga.update();
 		forma().setTexture(_animatieStanga.texturaCurenta());
 	}
 }
 void Monstru::update() {
-	_directieCurenta = DIR::stanga;
+	setareDirectieCurenta(DIR::stanga);
 	updateAnimatie();
+
+}
+
+void Monstru::ai() {
 
 }

@@ -99,3 +99,28 @@ void Entitate::rotire() {
 
 	}
 }
+
+void Entitate::setareDirectieCurenta(DIR directieCurenta) {
+	_directieCurenta = directieCurenta;
+	int rand = _joc->harta->iaRand(pos.y);
+	int coloana = _joc->harta->iaColoana(pos.x);
+	if (_directieCurenta == DIR::sus) {
+		_destinatie = { coloana,rand - 1 };
+		forma().setPosition(_joc->harta->iaCoordonataColoana(coloana) + _joc->harta->lungimePeColoana() / 2, pos.y);
+	}
+	else if (_directieCurenta == DIR::dreapta) {
+		_destinatie = { coloana + 1,rand };
+		forma().setPosition(pos.x, _joc->harta->iaCoordonataRand(rand) + _joc->harta->inaltimePeRand() / 2);
+	}
+	else if (_directieCurenta == DIR::jos) {
+		_destinatie = { coloana,rand + 1 };
+		forma().setPosition(_joc->harta->iaCoordonataColoana(coloana) + _joc->harta->lungimePeColoana() / 2, pos.y);
+	}
+	else if (_directieCurenta == DIR::stanga) {
+		_destinatie = { coloana - 1,rand };
+		forma().setPosition(pos.x, _joc->harta->iaCoordonataRand(rand) + _joc->harta->inaltimePeRand() / 2);
+	}
+	else {
+		_destinatie = { coloana , rand };
+	}
+}

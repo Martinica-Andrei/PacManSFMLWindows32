@@ -3,7 +3,7 @@
 #include "Constante.h"
 #include "Animatie.h"
 class Entitate : public ObiectJoc {
-protected:
+private:
 	DIR _directieCurenta = DIR::null;
 	// miscarea se face pe baza de destinatie, iar ea trebuie sa aiba maxim distanta 1 fata de entitate , altfel are probleme
 	// distantele sunt pe baza de coordonatele matricei (rand si coloana)
@@ -18,4 +18,8 @@ public:
 	void miscare();
 	void rotire();
 	Entitate(Joc* joc);
+	void setareDirectieCurenta(DIR directieCurenta);
+	DIR directieCurenta() {
+		return _directieCurenta;
+	}
 };

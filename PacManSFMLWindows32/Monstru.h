@@ -18,4 +18,6 @@ public:
 
 	void updateAnimatie();
 	void update() override;
+
+	void ai();
 };

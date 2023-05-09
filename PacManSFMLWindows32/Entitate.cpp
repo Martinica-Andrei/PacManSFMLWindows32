@@ -1,6 +1,6 @@
 #include "Entitate.h"
 #include "Joc.h"
-
+#include <queue>
 
 Entitate::Entitate(Joc* joc) : ObiectJoc(joc, new sf::RectangleShape({ 1,1 })), pos(forma().getPosition()),
 scale(forma().getScale()) {
@@ -10,7 +10,6 @@ scale(forma().getScale()) {
 
 DIR Entitate::oprireMiscareDirectie() {
 	int rand, coloana;
-	auto& pos = forma().getPosition();
 	if (_directieCurenta == DIR::sus) {
 		rand = _joc->harta->iaRand(pos.y + _joc->harta->inaltimePeRand() / 2);
 		coloana = _joc->harta->iaColoana(pos.x);
@@ -123,4 +122,102 @@ void Entitate::setareDirectieCurenta(DIR directieCurenta) {
 	else {
 		_destinatie = { coloana , rand };
 	}
+}
+
+void Entitate::setareCoordonate(int rand, int coloana) {
+	forma().setPosition(_joc->harta->iaCoordonataColoana(coloana) + _joc->harta->lungimePeColoana() / 2,
+		_joc->harta->iaCoordonataRand(rand) + _joc->harta->inaltimePeRand() / 2);
+}
+struct Vecini {
+							  // sus      dreapta  stanga   jos
+	std::vector<Vecini*> vecini{ nullptr, nullptr, nullptr, nullptr };
+	sf::Vector2i pozitie;
+	int index;
+
+	~Vecini() {
+		int i;
+		// mai intai facem toti vecinii sai sa nu aiba referinte pe el insusi
+		for (i = 0; i < vecini.size(); i++) {
+			Vecini* vecin = vecini[i];
+			if (vecin == nullptr) {
+				continue;
+			}
+			vecin->vecini[3 - i] = nullptr;
+		}
+		// dupa aceea ii stergem
+		for (auto& vecin : vecini) {
+			delete vecin;
+		}
+	}
+
+	Vecini(int index, sf::Vector2i pozitie) : index(index), pozitie(pozitie) {}
+
+	int celMaiMicIndexDintreVecini() {
+		int i, j = INT_MAX;
+		int indexRaspuns = 0;
+		for (i = 0; i < vecini.size(); i++) {
+			Vecini* vecin = vecini[i];
+			if (vecin && vecin->index < j) {
+				j = vecin->index;
+				indexRaspuns = i;
+			}
+		}
+		return indexRaspuns;
+	}
+};
+
+sf::Vector2i Entitate::coordonateMatrice() {
+	return { _joc->harta->iaColoana(pos.x), _joc->harta->iaRand(pos.y) };
+}
+
+std::stack<DIR> Entitate::drumCatreCoordonate(int rand, int coloana) {
+	stack<DIR> directii;
+	int randThis = _joc->harta->iaRand(pos.y);
+	int coloanaThis = _joc->harta->iaColoana(pos.x);
+	std::vector<std::vector<bool>> visitate(_joc->harta->randuri(), std::vector<bool>(_joc->harta->coloane()));
+	queue<Vecini*> coada;
+	Vecini* cap = new Vecini(0, { coloanaThis, randThis });
+	coada.push(cap);
+	Vecini* curent;
+	while (coada.size()) {
+		curent = coada.front();
+		auto& coord = curent->pozitie;
+		if (coord.x == coloana && coord.y == rand) {
+			break;
+		}
+		if (visitate[coord.y][coord.x] == false) {
+			visitate[coord.y][coord.x] = true;
+			std::vector<sf::Vector2i> pozitii{
+				{ coord.x, coord.y - 1 }, // sus
+				{ coord.x + 1, coord.y }, // dreapta
+				{ coord.x - 1, coord.y }, // stanga
+				{ coord.x, coord.y + 1 } // jos
+			};
+			for (int i = 0; i < pozitii.size(); i++) {
+				if (curent->vecini[i]) continue;
+				sf::Vector2i& pozitieObiect = pozitii[i];
+				ObiectJoc* obiect = _joc->harta->iaObiect(pozitieObiect.y, pozitieObiect.x);
+				if (obiect == nullptr || obiect->tipObiect() != TIPURI_OBIECTE::perete) {
+					Vecini* vecinNou = new Vecini(curent->index + 1, pozitieObiect);
+					curent->vecini[i] = vecinNou;
+					vecinNou->vecini[3 - i] = curent;
+					coada.push(vecinNou);
+				}
+			}
+	
+		}
+		coada.pop();
+	}
+	if (coada.size()) {
+		// curent e deja setat dar 100% sa nu fie erori
+		curent = coada.front();
+		do{
+			int directie = curent->celMaiMicIndexDintreVecini();
+			directii.push(DIR(3 - directie));
+			curent = curent->vecini[directie];
+		} while (curent && curent->index > 0);
+
+	}
+	delete cap;
+	return directii;
 }

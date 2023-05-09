@@ -19,5 +19,6 @@ public:
 	void updateAnimatie();
 	void update() override;
 
-	void ai();
+	std::stack<DIR> drum;
+
 };

@@ -1,9 +1,10 @@
 #include "Monstru.h"	
 #include "Joc.h"
+#include "Player.h"
 Monstru::Monstru(Joc* joc, TIP_MONSTRU tipMonstru) : Entitate(joc), _animatieSus(joc), _animatieDreapta(joc), _animatieJos(joc), _animatieStanga(joc) {
 	const Texturi& tex = joc->texturi;
 	if (tipMonstru == TIP_MONSTRU::albastru) {
-		_animatieDreapta.texturi = {&tex.monstruAlbastru[0][0], &tex.monstruAlbastru[0][1] };
+		_animatieDreapta.texturi = { &tex.monstruAlbastru[0][0], &tex.monstruAlbastru[0][1] };
 		_animatieStanga.texturi = { &tex.monstruAlbastru[0][2], &tex.monstruAlbastru[0][3] };
 		_animatieSus.texturi = { &tex.monstruAlbastru[0][4], &tex.monstruAlbastru[0][5] };
 		_animatieJos.texturi = { &tex.monstruAlbastru[0][6], &tex.monstruAlbastru[0][7] };
@@ -32,6 +33,7 @@ Monstru::Monstru(Joc* joc, TIP_MONSTRU tipMonstru) : Entitate(joc), _animatieSus
 	_animatieJos.secundePeFrame = 0.2;
 	forma().setScale(40, 40);
 	forma().setTexture(_animatieSus.texturaCurenta());
+	forma().setOrigin(0.5, 0.5);
 	_velocitate = 100.f;
 }
 
@@ -54,11 +56,19 @@ void Monstru::updateAnimatie() {
 	}
 }
 void Monstru::update() {
-	setareDirectieCurenta(DIR::stanga);
+	if (drum.size() == 0) {
+		auto pozitiePlayer = _joc->player->coordonateMatrice();
+		drum = drumCatreCoordonate(pozitiePlayer.y, pozitiePlayer.x);
+		setareDirectieCurenta(drum.top());
+		drum.pop();
+	}
+	miscare();
+	DIR miscareOprita = oprireMiscareDirectie();
+	if (miscareOprita != DIR::null && drum.size()) {
+		setareDirectieCurenta(drum.top());
+		drum.pop();
+	}
+
 	updateAnimatie();
-
-}
-
-void Monstru::ai() {
 
 }

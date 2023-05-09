@@ -33,6 +33,14 @@ public:
 		return x /_lungimePeColoana;
 	}
 
+	int randuri() {
+		return _randuri;
+	}
+
+	int coloane() {
+		return _coloane;
+	}
+
 	float iaCoordonataColoana(unsigned int coloana) {
 		return coloana * _lungimePeColoana;
 	}

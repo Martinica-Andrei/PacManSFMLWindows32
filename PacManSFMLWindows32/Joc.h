@@ -3,6 +3,7 @@
 #include <vector>
 #include "Texturi.h"
 #include "Harta.h"
+#include <random>
 class ObiectJoc;
 class Player;
 class Joc {

@@ -2,6 +2,7 @@
 #include "ObiectJoc.h"
 #include "Constante.h"
 #include "Animatie.h"
+#include <stack>
 class Entitate : public ObiectJoc {
 private:
 	DIR _directieCurenta = DIR::null;
@@ -22,4 +23,11 @@ public:
 	DIR directieCurenta() {
 		return _directieCurenta;
 	}
+	const sf::Vector2i& destinatie() {
+		return _destinatie;
+	}
+
+	void setareCoordonate(int rand, int coloana);
+	sf::Vector2i coordonateMatrice();
+	std::stack<DIR> drumCatreCoordonate(int rand, int coloana);
 };

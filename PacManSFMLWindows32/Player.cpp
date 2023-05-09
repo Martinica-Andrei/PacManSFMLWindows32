@@ -32,36 +32,24 @@ void Player::input() {
 		if ((sus == nullptr || sus->tipObiect() != TIPURI_OBIECTE::perete) &&
 			eInRaza(_joc->harta->iaCoordonataColoana(coloana) + _joc->harta->lungimePeColoana() / 2, 2 ,pos.x)) {
 			setareDirectieCurenta(DIR::sus);
-			//_directieCurenta = DIR::sus;
-			//_destinatie = { coloana,rand - 1 };
-			//forma().setPosition(_joc->harta->iaCoordonataColoana(coloana) + _joc->harta->lungimePeColoana() / 2, pos.y);
 		}
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D)) {
 		if ((dreapta == nullptr || dreapta->tipObiect() != TIPURI_OBIECTE::perete) &&
 			eInRaza(_joc->harta->iaCoordonataRand(rand) + _joc->harta->inaltimePeRand() / 2, 2, pos.y)) {
 			setareDirectieCurenta(DIR::dreapta);
-			//_directieCurenta = DIR::dreapta;
-			//_destinatie = { coloana + 1,rand };
-			//forma().setPosition(pos.x, _joc->harta->iaCoordonataRand(rand) + _joc->harta->inaltimePeRand() / 2);
 		}
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S)) {
 		if ((jos == nullptr || jos->tipObiect() != TIPURI_OBIECTE::perete) &&
 			eInRaza(_joc->harta->iaCoordonataColoana(coloana) + _joc->harta->lungimePeColoana() / 2, 2, pos.x)) {
 			setareDirectieCurenta(DIR::jos);
-			//_directieCurenta = DIR::jos;
-			//_destinatie = { coloana,rand + 1 };
-			//forma().setPosition(_joc->harta->iaCoordonataColoana(coloana) + _joc->harta->lungimePeColoana() / 2, pos.y);
 		}
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A)) {
 		if ((stanga == nullptr || stanga->tipObiect() != TIPURI_OBIECTE::perete) &&
 			eInRaza(_joc->harta->iaCoordonataRand(rand) + _joc->harta->inaltimePeRand() / 2, 2, pos.y)) {
 			setareDirectieCurenta(DIR::stanga);
-			//_directieCurenta = DIR::stanga;
-			//_destinatie = { coloana - 1,rand };
-			//forma().setPosition(pos.x, _joc->harta->iaCoordonataRand(rand) + _joc->harta->inaltimePeRand() / 2);
 		}
 	}
 

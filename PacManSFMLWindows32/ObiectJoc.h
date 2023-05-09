@@ -12,6 +12,7 @@ private:
 protected:
 	Joc* _joc;
 public:
+	TIPURI_OBIECTE tipObiect = TIPURI_OBIECTE::nimic;
 	bool eSters = false;
 	virtual ~ObiectJoc() {
 		delete _forma;
@@ -25,9 +26,9 @@ public:
 
 	virtual void desenare();
 	virtual void update() {}
-	virtual TIPURI_OBIECTE tipObiect() {
-		return TIPURI_OBIECTE::nimic;
-	}
+	//virtual TIPURI_OBIECTE tipObiect() {
+	//	return TIPURI_OBIECTE::nimic;
+	//}
 
 	virtual void coliziune(Player& player){}
 };

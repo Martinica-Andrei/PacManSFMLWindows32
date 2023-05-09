@@ -29,25 +29,25 @@ void Player::input() {
 	ObiectJoc* jos = _joc->harta->iaObiect(rand + 1, coloana);
 	ObiectJoc* stanga = _joc->harta->iaObiect(rand, coloana - 1);
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W)) {
-		if ((sus == nullptr || sus->tipObiect != TIPURI_OBIECTE::perete) &&
-			eInRaza(_joc->harta->iaCoordonataColoana(coloana) + _joc->harta->lungimePeColoana() / 2, 2 ,pos.x)) {
+		if ((sus == nullptr || peretiColiziune.count(sus->tipObiect) == false) &&
+			eInRaza(_joc->harta->iaCoordonataColoana(coloana) + _joc->harta->lungimePeColoana() / 2, 2, pos.x)) {
 			setareDirectieCurenta(DIR::sus);
 		}
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D)) {
-		if ((dreapta == nullptr || dreapta->tipObiect != TIPURI_OBIECTE::perete) &&
+		if ((dreapta == nullptr || peretiColiziune.count(dreapta->tipObiect) == false) &&
 			eInRaza(_joc->harta->iaCoordonataRand(rand) + _joc->harta->inaltimePeRand() / 2, 2, pos.y)) {
 			setareDirectieCurenta(DIR::dreapta);
 		}
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S)) {
-		if ((jos == nullptr || jos->tipObiect != TIPURI_OBIECTE::perete) &&
+		if ((jos == nullptr || peretiColiziune.count(jos->tipObiect) == false) &&
 			eInRaza(_joc->harta->iaCoordonataColoana(coloana) + _joc->harta->lungimePeColoana() / 2, 2, pos.x)) {
 			setareDirectieCurenta(DIR::jos);
 		}
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A)) {
-		if ((stanga == nullptr || stanga->tipObiect != TIPURI_OBIECTE::perete) &&
+		if ((stanga == nullptr || peretiColiziune.count(stanga->tipObiect) == false) &&
 			eInRaza(_joc->harta->iaCoordonataRand(rand) + _joc->harta->inaltimePeRand() / 2, 2, pos.y)) {
 			setareDirectieCurenta(DIR::stanga);
 		}
@@ -56,7 +56,9 @@ void Player::input() {
 }
 
 void Player::update() {
-	input();
+	if (pos.x > hotarXStanga && pos.x < _joc->ecran()->getSize().x) {
+		input();
+	}
 	miscare();
 	sf::Vector2f distantaTraversata = (_pozitieCurenta - forma().getPosition());
 	_animatie.adaugareContor(abs(distantaTraversata.x) + abs(distantaTraversata.y));
@@ -67,5 +69,6 @@ void Player::update() {
 	if (centru != nullptr) {
 		centru->coliziune(*this);
 	}
+	hotare();
 
 }

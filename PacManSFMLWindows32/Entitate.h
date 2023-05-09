@@ -13,6 +13,8 @@ private:
 public:
 	const sf::Vector2f& pos;
 	const sf::Vector2f& scale;
+	float hotarXStanga = 0;
+	float hotarXDreapta = 0;
 	float _velocitate = 0;
 	// variabila asta e pentru monstrii,  ca sa ignore usa roz
 	std::unordered_set<TIPURI_OBIECTE> peretiColiziune{ TIPURI_OBIECTE::perete, TIPURI_OBIECTE::usa };
@@ -33,4 +35,8 @@ public:
 	void setareCoordonate(int rand, int coloana);
 	sf::Vector2i coordonateMatrice();
 	std::stack<DIR> drumCatreCoordonate(int rand, int coloana);
+
+	void hotare();
+
+
 };

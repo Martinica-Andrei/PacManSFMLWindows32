@@ -8,6 +8,8 @@ Joc::Joc() {
     harta = new Harta(this);
     obiecte.push_back(harta);
     player = new Player(this);
+    player->hotarXStanga = -player->scale.x / 2;
+    player->hotarXDreapta = _ecran->getSize().x + player->scale.x / 2;
     obiecte.push_back(player);
     Monstru* albastru = new Monstru(this, Monstru::TIP_MONSTRU::albastru);
     albastru->setareCoordonate(14, 14);

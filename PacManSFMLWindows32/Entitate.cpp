@@ -182,6 +182,10 @@ std::stack<DIR> Entitate::drumCatreCoordonate(int rand, int coloana) {
 	while (coada.size()) {
 		curent = coada.front();
 		auto& coord = curent->pozitie;
+		if (coord.x < 0 || coord.x >= _joc->harta->coloane() || coord.y < 0 || coord.y >= _joc->harta->randuri()) {
+			coada.pop();
+			continue;
+		}
 		if (coord.x == coloana && coord.y == rand) {
 			break;
 		}
@@ -221,4 +225,15 @@ std::stack<DIR> Entitate::drumCatreCoordonate(int rand, int coloana) {
 	}
 	delete cap;
 	return directii;
+}
+
+void Entitate::hotare() {
+	if (pos.x < hotarXStanga) {
+		forma().setPosition(hotarXDreapta, pos.y);
+		setareDirectieCurenta(directieCurenta());
+	}
+	else if (pos.x > hotarXDreapta) {
+		forma().setPosition(hotarXStanga, pos.y);
+		setareDirectieCurenta(directieCurenta());
+	}
 }

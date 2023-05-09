@@ -3,6 +3,7 @@
 #include "Constante.h"
 #include "Animatie.h"
 #include <stack>
+#include <unordered_set>
 class Entitate : public ObiectJoc {
 private:
 	DIR _directieCurenta = DIR::null;
@@ -13,6 +14,8 @@ public:
 	const sf::Vector2f& pos;
 	const sf::Vector2f& scale;
 	float _velocitate = 0;
+	// variabila asta e pentru monstrii,  ca sa ignore usa roz
+	std::unordered_set<TIPURI_OBIECTE> peretiColiziune{ TIPURI_OBIECTE::perete, TIPURI_OBIECTE::usa };
 
 	DIR oprireMiscareDirectie();
 	void continuareMiscareDirectie(DIR oprireMiscare);

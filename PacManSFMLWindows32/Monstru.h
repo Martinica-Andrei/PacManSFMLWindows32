@@ -18,6 +18,8 @@ public:
 
 	void updateAnimatie();
 	void update() override;
+	void drumSprePlayer();
+	void drumRandom();
 
 	std::stack<DIR> drum;
 

@@ -1,8 +1,9 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 enum class TIPURI_OBIECTE {
-	nimic=-1,
+	nimic= -1,
 	perete = 0,
+	usa = 1,
 };
 class Joc;
 class Player;
@@ -26,9 +27,6 @@ public:
 
 	virtual void desenare();
 	virtual void update() {}
-	//virtual TIPURI_OBIECTE tipObiect() {
-	//	return TIPURI_OBIECTE::nimic;
-	//}
 
 	virtual void coliziune(Player& player){}
 };

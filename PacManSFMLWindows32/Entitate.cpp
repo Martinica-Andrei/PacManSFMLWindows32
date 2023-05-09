@@ -65,7 +65,7 @@ void Entitate::continuareMiscareDirectie(DIR oprireMiscare) {
 }
 void Entitate::miscare() {
 	ObiectJoc* obiect = _joc->harta->iaObiect(_destinatie.y, _destinatie.x);
-	if (obiect != nullptr && obiect->tipObiect == TIPURI_OBIECTE::perete) return;
+	if (obiect != nullptr && peretiColiziune.count(obiect->tipObiect)) return;
 	float viteza = _velocitate * _joc->timpDeLaUltimulFrame;
 	if (_directieCurenta == DIR::sus) {
 		forma().move(0, -viteza);
@@ -197,7 +197,7 @@ std::stack<DIR> Entitate::drumCatreCoordonate(int rand, int coloana) {
 				if (curent->vecini[i]) continue;
 				sf::Vector2i& pozitieObiect = pozitii[i];
 				ObiectJoc* obiect = _joc->harta->iaObiect(pozitieObiect.y, pozitieObiect.x);
-				if (obiect == nullptr || obiect->tipObiect != TIPURI_OBIECTE::perete) {
+				if (obiect == nullptr || peretiColiziune.count(obiect->tipObiect) == false) {
 					Vecini* vecinNou = new Vecini(curent->index + 1, pozitieObiect);
 					curent->vecini[i] = vecinNou;
 					vecinNou->vecini[3 - i] = curent;

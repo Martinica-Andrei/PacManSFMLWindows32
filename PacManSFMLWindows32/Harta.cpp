@@ -33,6 +33,9 @@ Harta::Harta(Joc* joc) : ObiectJoc(joc, new sf::CircleShape()), _tiledHarta("dat
                 obiect = new Mancare(joc);
                 obiect->forma().setTexture(textura);
             }
+            if (v == 44) {
+                obiect->tipObiect = TIPURI_OBIECTE::usa;
+            }
             matrice[r].push_back(obiect);
             obiect->forma().setPosition(c * _lungimePeColoana, r * _inaltimePeRand + _startY);
             obiect->forma().setScale(_lungimePeColoana, _inaltimePeRand);

@@ -17,9 +17,9 @@ Joc::Joc() {
     galben->setareCoordonate(14, 16);
     Monstru* rosu = new Monstru(this, Monstru::TIP_MONSTRU::rosu);
     rosu->setareCoordonate(11, 12);
-    //obiecte.push_back(albastru);
-    //obiecte.push_back(roz);
-    //obiecte.push_back(galben);
+    obiecte.push_back(albastru);
+    obiecte.push_back(roz);
+    obiecte.push_back(galben);
     obiecte.push_back(rosu);
     
 }

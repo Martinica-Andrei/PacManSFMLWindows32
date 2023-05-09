@@ -1,6 +1,7 @@
 #include "Monstru.h"	
 #include "Joc.h"
 #include "Player.h"
+#include <algorithm>
 Monstru::Monstru(Joc* joc, TIP_MONSTRU tipMonstru) : Entitate(joc), _animatieSus(joc), _animatieDreapta(joc), _animatieJos(joc), _animatieStanga(joc) {
 	const Texturi& tex = joc->texturi;
 	if (tipMonstru == TIP_MONSTRU::albastru) {
@@ -57,12 +58,8 @@ void Monstru::updateAnimatie() {
 }
 void Monstru::update() {
 	if (drum.size() == 0) {
-		auto pozitiePlayer = _joc->player->coordonateMatrice();
-		drum = drumCatreCoordonate(pozitiePlayer.y, pozitiePlayer.x);
-		if (drum.size()) {
-			setareDirectieCurenta(drum.top());
-			drum.pop();
-		}
+		//drumSprePlayer();
+		drumRandom();
 	}
 	miscare();
 	DIR miscareOprita = oprireMiscareDirectie();
@@ -73,4 +70,32 @@ void Monstru::update() {
 
 	updateAnimatie();
 
+}
+
+void Monstru::drumSprePlayer() {
+	auto pozitiePlayer = _joc->player->coordonateMatrice();
+	drum = drumCatreCoordonate(pozitiePlayer.y, pozitiePlayer.x);
+	if (drum.size()) {
+		setareDirectieCurenta(drum.top());
+		drum.pop();
+	}
+
+}
+
+void Monstru::drumRandom() {
+	std::vector<sf::Vector2i> pozitii;
+	for (int r = 0; r < _joc->harta->randuri(); r++) {
+		for (int c = 0; c < _joc->harta->coloane(); c++) {
+			ObiectJoc* obiect = _joc->harta->iaObiect(r, c);
+			if (obiect == nullptr || peretiColiziune.count(obiect->tipObiect) == false) {
+				pozitii.push_back({ c,r });
+			}
+		}
+	}
+	auto & coordRandom = pozitii[rand() % pozitii.size()];
+	drum = drumCatreCoordonate(coordRandom.y, coordRandom.x);
+	if (drum.size()) {
+		setareDirectieCurenta(drum.top());
+		drum.pop();
+	}
 }

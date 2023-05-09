@@ -4,6 +4,7 @@
 #include "Texturi.h"
 #include "Harta.h"
 #include <random>
+#include "MeniuPrincipal.h"
 class ObiectJoc;
 class Player;
 class Joc {
@@ -12,8 +13,10 @@ private:
 	int frameratePeSecunda = 75;
 	float _milisecundePeFrame = 1.f / frameratePeSecunda;
 public:
+	sf::Font font;
 	Harta* harta;
 	const Texturi texturi;
+	MeniuPrincipal* _meniuPrincipal;
 	std::vector<ObiectJoc*> obiecte;
 	float timpDeLaUltimulFrame = 0;
 	Player* player;
@@ -28,5 +31,7 @@ public:
 
 	void update();
 	void desenare();
+
+	void creareMonstrii();
 
 };

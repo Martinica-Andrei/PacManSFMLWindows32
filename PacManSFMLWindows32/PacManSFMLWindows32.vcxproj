@@ -146,6 +146,7 @@
     <ClCompile Include="Joc.cpp" />
     <ClCompile Include="JsonParser.cpp" />
     <ClCompile Include="Mancare.cpp" />
+    <ClCompile Include="MeniuPrincipal.cpp" />
     <ClCompile Include="Monstru.cpp" />
     <ClCompile Include="ObiectJoc.cpp" />
     <ClCompile Include="Perete.cpp" />
@@ -163,6 +164,7 @@
     <ClInclude Include="Joc.h" />
     <ClInclude Include="JsonParser.h" />
     <ClInclude Include="Mancare.h" />
+    <ClInclude Include="MeniuPrincipal.h" />
     <ClInclude Include="Monstru.h" />
     <ClInclude Include="ObiectJoc.h" />
     <ClInclude Include="Perete.h" />

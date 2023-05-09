@@ -4,6 +4,9 @@
 #include "Monstru.h"
 Joc::Joc() {
     srand(time(0));
+    font.loadFromFile("data\\fonts\\arial.ttf");
+    _meniuPrincipal = new MeniuPrincipal(this);
+    _meniuPrincipal->activeaza();
     _ecran->setFramerateLimit(frameratePeSecunda);
     harta = new Harta(this);
     obiecte.push_back(harta);
@@ -11,6 +14,12 @@ Joc::Joc() {
     player->hotarXStanga = -player->scale.x / 2;
     player->hotarXDreapta = _ecran->getSize().x + player->scale.x / 2;
     obiecte.push_back(player);
+    creareMonstrii();
+    
+}
+
+
+void Joc::creareMonstrii() {
     Monstru* albastru = new Monstru(this, Monstru::TIP_MONSTRU::albastru);
     albastru->setareCoordonate(14, 14);
     Monstru* roz = new Monstru(this, Monstru::TIP_MONSTRU::roz);
@@ -26,7 +35,6 @@ Joc::Joc() {
     obiecte.push_back(galben);
     galben->secundePoarta = 6.f;
     obiecte.push_back(rosu);
-    
 }
 
 Joc::~Joc() {
@@ -63,23 +71,33 @@ void Joc::start() {
     }
 }
 void Joc::update() {
-    for (int i = 0; i < obiecte.size();) {
-        ObiectJoc* obiect = obiecte[i];
-        if (obiect->eSters == true) {
-            delete obiect;
-            obiecte.erase(obiecte.begin() + i);
-        }
-        else {
-            obiect->update();
-            i++;
+    if (_meniuPrincipal->esteActiv()) {
+        _meniuPrincipal->update();
+    }
+    else {
+        for (int i = 0; i < obiecte.size();) {
+            ObiectJoc* obiect = obiecte[i];
+            if (obiect->eSters == true) {
+                delete obiect;
+                obiecte.erase(obiecte.begin() + i);
+            }
+            else {
+                obiect->update();
+                i++;
+            }
         }
     }
 
 }
 void Joc::desenare() {
     _ecran->clear();
-    for (int i = 0; i < obiecte.size(); i++) {
-        obiecte[i]->desenare();
+    if (_meniuPrincipal->esteActiv()) {
+        _meniuPrincipal->desenare();
+    }
+    else {
+        for (int i = 0; i < obiecte.size(); i++) {
+            obiecte[i]->desenare();
+        }
     }
     _ecran->display();
 }

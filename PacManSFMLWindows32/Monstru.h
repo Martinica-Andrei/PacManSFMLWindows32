@@ -7,6 +7,8 @@ private:
 	Animatie _animatieDreapta;
 	Animatie _animatieJos;
 	Animatie _animatieStanga;
+
+	float _contorSecundePoarta = 0;
 public:
 	enum class TIP_MONSTRU {
 		albastru=0,
@@ -22,5 +24,7 @@ public:
 	void drumRandom();
 
 	std::stack<DIR> drum;
+
+	float secundePoarta = 3.f;
 
 };

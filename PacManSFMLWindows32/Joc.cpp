@@ -18,8 +18,11 @@ Joc::Joc() {
     Monstru* rosu = new Monstru(this, Monstru::TIP_MONSTRU::rosu);
     rosu->setareCoordonate(11, 12);
     obiecte.push_back(albastru);
+    albastru->secundePoarta = 2.f;
     obiecte.push_back(roz);
+    roz->secundePoarta = 4.f;
     obiecte.push_back(galben);
+    galben->secundePoarta = 6.f;
     obiecte.push_back(rosu);
     
 }

@@ -57,9 +57,20 @@ void Monstru::updateAnimatie() {
 	}
 }
 void Monstru::update() {
+	if (peretiColiziune.count(TIPURI_OBIECTE::usa)) {
+		_contorSecundePoarta += _joc->timpDeLaUltimulFrame;
+		if (_contorSecundePoarta >= secundePoarta) {
+			peretiColiziune.erase(TIPURI_OBIECTE::usa);
+		}
+	}
 	if (drum.size() == 0) {
-		//drumSprePlayer();
-		drumRandom();
+		int nrRandom = rand() % 100;
+		if (nrRandom < 90) {
+			drumRandom();
+		}
+		else {
+			drumSprePlayer();
+		}
 	}
 	miscare();
 	DIR miscareOprita = oprireMiscareDirectie();

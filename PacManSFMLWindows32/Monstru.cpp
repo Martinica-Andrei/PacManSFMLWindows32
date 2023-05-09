@@ -59,8 +59,10 @@ void Monstru::update() {
 	if (drum.size() == 0) {
 		auto pozitiePlayer = _joc->player->coordonateMatrice();
 		drum = drumCatreCoordonate(pozitiePlayer.y, pozitiePlayer.x);
-		setareDirectieCurenta(drum.top());
-		drum.pop();
+		if (drum.size()) {
+			setareDirectieCurenta(drum.top());
+			drum.pop();
+		}
 	}
 	miscare();
 	DIR miscareOprita = oprireMiscareDirectie();

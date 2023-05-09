@@ -208,13 +208,14 @@ std::stack<DIR> Entitate::drumCatreCoordonate(int rand, int coloana) {
 		}
 		coada.pop();
 	}
-	if (coada.size()) {
+	if (coada.size() > 1) {
 		// curent e deja setat dar 100% sa nu fie erori
 		curent = coada.front();
 		do{
 			int directie = curent->celMaiMicIndexDintreVecini();
 			directii.push(DIR(3 - directie));
 			curent = curent->vecini[directie];
+	
 		} while (curent && curent->index > 0);
 
 	}

@@ -15,67 +15,10 @@ _animatie(joc, { &joc->texturi.pacman_1, &joc->texturi.pacman_2 }, 25) {
 
 void Player::miscare() {
 	_pozitieCurenta = pos;
-	float viteza = _velocitate * _joc->timpDeLaUltimulFrame;
-	ObiectJoc* obiect = _joc->harta->iaObiect(_destinatie.y, _destinatie.x);
-	if (obiect != nullptr && obiect->tipObiect() == TIPURI_OBIECTE::perete) return;
-	if (_directieCurenta == DIR::sus) {
-		forma().move(0, -viteza);
-		forma().setRotation(270);
-
-	}
-	if (_directieCurenta == DIR::dreapta) {
-		forma().move(viteza, 0);
-		forma().setRotation(0);
-
-	}
-	if (_directieCurenta == DIR::jos) {
-		forma().move(0, viteza);
-		forma().setRotation(90);
-
-	}
-	if (_directieCurenta == DIR::stanga) {
-		forma().move(-viteza, 0);
-		forma().setRotation(180);
-
-	}
-	int rand, coloana;
-	auto& pos = forma().getPosition();
-	if (_directieCurenta == DIR::sus) {
-		rand = _joc->harta->iaRand(pos.y + _joc->harta->inaltimePeRand() / 2);
-		coloana = _joc->harta->iaColoana(pos.x);
-		if (rand == _destinatie.y && coloana == _destinatie.x) {
-			forma().setPosition(_joc->harta->iaCoordonataColoana(coloana) + _joc->harta->lungimePeColoana() / 2,
-				_joc->harta->iaCoordonataRand(rand) + _joc->harta->inaltimePeRand() / 2);
-			_destinatie.y--;
-		}
-	}
-	else if (_directieCurenta == DIR::dreapta) {
-		rand = _joc->harta->iaRand(pos.y);
-		coloana = _joc->harta->iaColoana(pos.x - _joc->harta->lungimePeColoana() / 2);
-		if (rand == _destinatie.y && coloana == _destinatie.x) {
-			forma().setPosition(_joc->harta->iaCoordonataColoana(coloana) + _joc->harta->lungimePeColoana() / 2,
-				_joc->harta->iaCoordonataRand(rand) + _joc->harta->inaltimePeRand() / 2);
-			_destinatie.x++;
-		}
-	}
-	else if (_directieCurenta == DIR::jos) {
-		rand = _joc->harta->iaRand(pos.y - _joc->harta->inaltimePeRand() / 2);
-		coloana = _joc->harta->iaColoana(pos.x);
-		if (rand == _destinatie.y && coloana == _destinatie.x) {
-			forma().setPosition(_joc->harta->iaCoordonataColoana(coloana) + _joc->harta->lungimePeColoana() / 2,
-				_joc->harta->iaCoordonataRand(rand) + _joc->harta->inaltimePeRand() / 2);
-			_destinatie.y++;
-		}
-	}
-	else if (_directieCurenta == DIR::stanga) {
-		rand = _joc->harta->iaRand(pos.y);
-		coloana = _joc->harta->iaColoana(pos.x + _joc->harta->lungimePeColoana() / 2);
-		if (rand == _destinatie.y && coloana == _destinatie.x) {
-			forma().setPosition(_joc->harta->iaCoordonataColoana(coloana) + _joc->harta->lungimePeColoana() / 2,
-				_joc->harta->iaCoordonataRand(rand) + _joc->harta->inaltimePeRand() / 2);
-			_destinatie.x--;
-		}
-	}
+	Entitate::miscare();
+	Entitate::rotire();
+	DIR esteOprit = oprireMiscareDirectie();
+	continuareMiscareDirectie(esteOprit);
 }
 
 void Player::input() {

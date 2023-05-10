@@ -3,7 +3,7 @@
 #include <iostream>
 #include "Monstru.h"
 Player::Player(Joc* joc) : Entitate(joc),
-_animatie(joc, { &joc->texturi.pacman_1, &joc->texturi.pacman_2 }, 25) {
+_animatie(joc, { &joc->texturi.pacman_1, &joc->texturi.pacman_2 }, 10) {
 	forma().setScale(30, 30);
 	forma().setOrigin(0.5, 0.5);
 	forma().setTexture(_animatie.texturaCurenta());
@@ -76,6 +76,8 @@ void Player::update() {
 			_joc->eGameOver = true;
 		}
 	}
+
+
 	hotare();
 
 }

@@ -7,6 +7,8 @@ private:
 	Animatie _animatieDreapta;
 	Animatie _animatieJos;
 	Animatie _animatieStanga;
+	Animatie _animatieInfricosat1;
+	Animatie _animatieInfricosat2;
 
 	float _contorSecundePoarta = 0;
 public:

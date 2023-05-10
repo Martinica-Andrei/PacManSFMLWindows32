@@ -8,7 +8,7 @@ Joc::Joc() {
     _meniuPrincipal = new MeniuPrincipal(this);
     _meniuPrincipal->activeaza();
     _ecran->setFramerateLimit(frameratePeSecunda);
-    
+  
 }
 void Joc::adaugaMonstru(Monstru* monstru) {
     obiecte.push_back(monstru);

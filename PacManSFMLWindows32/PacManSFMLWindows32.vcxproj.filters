@@ -63,6 +63,12 @@
     <ClCompile Include="Buton.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="EventTimp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AbilitateImunitate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Joc.h">
@@ -111,6 +117,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Buton.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EventTimp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AbilitateImunitate.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

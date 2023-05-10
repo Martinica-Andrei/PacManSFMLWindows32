@@ -11,6 +11,9 @@ Texturi::Texturi() {
 	monstruRoz = incarcareAtlas("data\\monstrii\\roz.png", 1, 8, 14, 14, 2);
 	monstruAlbastru = incarcareAtlas("data\\monstrii\\albastru.png", 1, 8, 14, 14, 2);
 	monstruGalben = incarcareAtlas("data\\monstrii\\galben.png", 1, 8, 14, 14, 2);
+
+	monstruInfricosat = incarcareAtlas("data\\monstrii\\infricosat.png", 1, 4, 14, 14, 2);
+	monstruOchi = incarcareAtlas("data\\monstrii\\infricosat.png", 1, 4, 14, 14, 2);
 }
 
 std::vector<std::vector<sf::Texture>> Texturi::incarcareAtlas(const std::string& numeFisier, int randuri, int coloane, int lungime, int inaltime, int spatiu){

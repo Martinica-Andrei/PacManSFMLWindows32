@@ -3,6 +3,7 @@
 #include "Constante.h"
 #include "Animatie.h"
 #include "Entitate.h"
+#include "EventTimp.h"
 class Player : public Entitate {
 private:
 	Animatie _animatie;
@@ -12,4 +13,5 @@ public:
 	void miscare();
 	void input();
 	void update() override;
+
 };

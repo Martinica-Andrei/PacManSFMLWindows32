@@ -17,7 +17,8 @@ public:
 	std::vector<std::vector<sf::Texture>> monstruRoz;
 	std::vector<std::vector<sf::Texture>> monstruAlbastru;
 	std::vector<std::vector<sf::Texture>> monstruGalben;
-
+	std::vector<std::vector<sf::Texture>> monstruInfricosat;
+	std::vector<std::vector<sf::Texture>> monstruOchi;
 	Texturi();
 
 };

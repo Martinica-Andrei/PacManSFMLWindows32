@@ -2,7 +2,8 @@
 #include "Joc.h"
 #include "Player.h"
 #include <algorithm>
-Monstru::Monstru(Joc* joc, TIP_MONSTRU tipMonstru) : Entitate(joc), _animatieSus(joc), _animatieDreapta(joc), _animatieJos(joc), _animatieStanga(joc) {
+Monstru::Monstru(Joc* joc, TIP_MONSTRU tipMonstru) : Entitate(joc), _animatieSus(joc), _animatieDreapta(joc), _animatieJos(joc), _animatieStanga(joc),
+_animatieInfricosat1(joc), _animatieInfricosat2(joc) {
 	const Texturi& tex = joc->texturi;
 	if (tipMonstru == TIP_MONSTRU::albastru) {
 		_animatieDreapta.texturi = { &tex.monstruAlbastru[0][0], &tex.monstruAlbastru[0][1] };
@@ -32,10 +33,15 @@ Monstru::Monstru(Joc* joc, TIP_MONSTRU tipMonstru) : Entitate(joc), _animatieSus
 	_animatieStanga.secundePeFrame = 0.2;
 	_animatieSus.secundePeFrame = 0.2;
 	_animatieJos.secundePeFrame = 0.2;
+	_animatieInfricosat1.secundePeFrame = 0.2;
+	_animatieInfricosat2.secundePeFrame = 0.2;
 	forma().setScale(32, 32);
 	forma().setTexture(_animatieSus.texturaCurenta());
 	forma().setOrigin(0.5, 0.5);
 	_velocitate = 100.f;
+
+	_animatieInfricosat1.texturi = { &_joc->texturi.monstruInfricosat[0][0],&_joc->texturi.monstruInfricosat[0][1] };
+	_animatieInfricosat2.texturi = { &_joc->texturi.monstruInfricosat[0][2],&_joc->texturi.monstruInfricosat[0][3] };
 }
 
 void Monstru::updateAnimatie() {
@@ -103,7 +109,7 @@ void Monstru::drumRandom() {
 			}
 		}
 	}
-	auto & coordRandom = pozitii[rand() % pozitii.size()];
+	auto& coordRandom = pozitii[rand() % pozitii.size()];
 	drum = drumCatreCoordonate(coordRandom.y, coordRandom.x);
 	if (drum.size()) {
 		setareDirectieCurenta(drum.top());

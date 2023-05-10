@@ -139,10 +139,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AbilitateImunitate.cpp" />
     <ClCompile Include="Animatie.cpp" />
     <ClCompile Include="Buton.cpp" />
     <ClCompile Include="CutieColiziune.cpp" />
     <ClCompile Include="Entitate.cpp" />
+    <ClCompile Include="EventTimp.cpp" />
     <ClCompile Include="Harta.cpp" />
     <ClCompile Include="Joc.cpp" />
     <ClCompile Include="JsonParser.cpp" />
@@ -157,11 +159,13 @@
     <ClCompile Include="Tiled.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AbilitateImunitate.h" />
     <ClInclude Include="Animatie.h" />
     <ClInclude Include="Buton.h" />
     <ClInclude Include="Constante.h" />
     <ClInclude Include="CutieColiziune.h" />
     <ClInclude Include="Entitate.h" />
+    <ClInclude Include="EventTimp.h" />
     <ClInclude Include="Harta.h" />
     <ClInclude Include="Joc.h" />
     <ClInclude Include="JsonParser.h" />

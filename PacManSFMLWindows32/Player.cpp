@@ -23,6 +23,7 @@ void Player::miscare() {
 }
 
 void Player::input() {
+	if (_joc->eFreeze) return;
 	int rand = _joc->harta->iaRand(pos.y);
 	int coloana = _joc->harta->iaColoana(pos.x);
 	ObiectJoc* sus = _joc->harta->iaObiect(rand - 1, coloana);
@@ -53,6 +54,8 @@ void Player::input() {
 			setareDirectieCurenta(DIR::stanga);
 		}
 	}
+
+
 
 }
 

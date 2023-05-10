@@ -51,6 +51,9 @@ void Joc::init() {
                 _ecran->close();
         }
         float timpDeLaUltimulFrameTotal = ceas.restart().asSeconds();
+        if (eFreeze) {
+            timpDeLaUltimulFrameTotal = 0;
+        }
         // sa zicem ca jocul da freeze si trece o secunda, daca nu facem acest loop
         // atunci oricare obiect care se misca folosind timpul, se va teleporta fara a verifica coliziuni
         while (timpDeLaUltimulFrameTotal >= 0) {
@@ -61,9 +64,10 @@ void Joc::init() {
             else {
                 timpDeLaUltimulFrameTotal -= _milisecundePeFrame;
                 timpDeLaUltimulFrame = _milisecundePeFrame;
+                update();
             }
-            update();
         }
+        update();
         desenare();
     }
 }

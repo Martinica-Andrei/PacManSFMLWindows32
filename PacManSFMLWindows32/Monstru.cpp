@@ -167,7 +167,12 @@ void Monstru::coliziune(Player& player) {
 		}
 	}
 }
-
+void Monstru::setareVelocitateNormala(float val) {
+	_velocitateNormala = val;
+	_velocitateInfricosat = _velocitateNormala * 0.75;
+	_velocitateRespawn = _velocitateNormala * 3;
+	_velocitate = _velocitateNormala;
+}
 void Monstru::activareInfricosare() {
 	if (_esteRespawn == false) {
 		_esteInfricosat = true;

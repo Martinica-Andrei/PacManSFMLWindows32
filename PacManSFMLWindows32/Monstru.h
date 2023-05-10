@@ -26,6 +26,7 @@ public:
 		rosu=3
 	};
 	Monstru(Joc* joc, TIP_MONSTRU tipMonstru);
+	void setareVelocitateNormala(float val);
 
 	void updateAnimatie();
 	void updateAnimatieNormal();

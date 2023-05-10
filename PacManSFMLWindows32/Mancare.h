@@ -8,6 +8,6 @@ private:
 public:
 
 	Mancare(Joc* joc, bool areAbilitate);
-
+	~Mancare();
 	void coliziune(Player& player) override;
 };

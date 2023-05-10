@@ -12,6 +12,7 @@ private:
 	float _startY = 80;
 
 public:
+	int nrDeMancaruri;
 	std::vector<std::vector<ObiectJoc*>> matrice;
 	Harta(Joc* joc);
 	virtual ~Harta();

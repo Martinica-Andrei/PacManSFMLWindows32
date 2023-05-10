@@ -14,6 +14,7 @@ private:
 	sf::RenderWindow* _ecran = new sf::RenderWindow(sf::VideoMode(800, 600), "Martinica Andrei-Marian Pac-Man", sf::Style::Titlebar | sf::Style::Close);
 	int frameratePeSecunda = 75;
 	float _milisecundePeFrame = 1.f / frameratePeSecunda;
+	int _nivel = 1;
 public:
 	bool eGameOver = false;
 	bool eFreeze = false;
@@ -43,6 +44,6 @@ public:
 	void start();
 	void sfarsit();
 	void resetare();
-
+	void nivelNou();
 	void adaugaMonstru(Monstru* monstru);
 };

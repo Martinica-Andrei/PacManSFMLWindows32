@@ -32,6 +32,10 @@ void Joc::creareMonstrii() {
 	albastru->secundePoarta = 2.f;
 	roz->secundePoarta = 4.f;
 	galben->secundePoarta = 6.f;
+
+	for (auto& monstru : monstrii) {
+		monstru->setareVelocitateNormala(100 + (_nivel - 1) * 10);
+	}
 }
 
 Joc::~Joc() {
@@ -68,6 +72,12 @@ void Joc::init() {
 		desenare();
 	}
 }
+
+void Joc::nivelNou() {
+	_nivel++;
+	start();
+}
+
 void Joc::update() {
 	if (eGameOver) {
 		sfarsit();
@@ -77,6 +87,9 @@ void Joc::update() {
 		meniuPrincipal->update();
 	}
 	else if (eFreeze == false) {
+		if (harta->nrDeMancaruri == 0) {
+			nivelNou();
+		}
 		for (int i = 0; i < obiecte.size();) {
 			ObiectJoc* obiect = obiecte[i];
 			if (obiect->eSters == true) {
@@ -116,13 +129,16 @@ void Joc::desenare() {
 
 
 void Joc::start() {
+	for (auto& obiect : obiecte) {
+		delete obiect;
+	}
+	obiecte.clear();
+	monstrii.clear();
 	eGameOver = false;
 	meniuPrincipal->dezactiveaza();
 	harta = new Harta(this);
 	obiecte.push_back(harta);
 	player = new Player(this);
-	player->hotarXStanga = -player->scale.x / 2;
-	player->hotarXDreapta = _ecran->getSize().x + player->scale.x / 2;
 	obiecte.push_back(player);
 	creareMonstrii();
 }
@@ -133,6 +149,7 @@ void Joc::sfarsit() {
 	obiecte.clear();
 	monstrii.clear();
 	hud->resetare();
+	_nivel = 1;
 
 }
 void Joc::resetare() {

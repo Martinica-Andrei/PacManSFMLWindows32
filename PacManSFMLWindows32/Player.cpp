@@ -34,6 +34,9 @@ _animatie(joc, { &joc->texturi.pacman_1, &joc->texturi.pacman_2 }, 10) {
 		_joc->eFreeze = false;
 		_monstruMancat = nullptr;
 	};
+
+	hotarXStanga = scale.x / 2;
+	hotarXDreapta = joc->ecran()->getSize().x + scale.x / 2;
 }
 void Player::desenare() {
 	ObiectJoc::desenare();

@@ -16,3 +16,7 @@ void Mancare::coliziune(Player& player) {
 	}
 
 }
+
+Mancare::~Mancare() {
+	_joc->harta->nrDeMancaruri--;
+}

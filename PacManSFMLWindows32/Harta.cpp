@@ -13,12 +13,7 @@ Harta::Harta(Joc* joc) : ObiectJoc(joc, new sf::CircleShape()), _tiledHarta("dat
         for (int c = 0; c < _coloane; c++) {
             int v = _tiledHarta.data[r * _coloane + c];
             if (v == 0) {
-                matrice[r].push_back(nullptr);
-           /*     CutieColiziune* cutieColiziune = new CutieColiziune(joc);
-                cutieColiziune->forma().setPosition(c * _lungimePeColoana, r * _inaltimePeRand + _startY);
-                cutieColiziune->forma().setScale(_lungimePeColoana, _inaltimePeRand);
-                cutieColiziune->forma().setFillColor(sf::Color::White);
-                matrice[r].push_back(cutieColiziune);*/
+                matrice[r].push_back(nullptr);    
                 continue;
             }
             v--;
@@ -31,6 +26,7 @@ Harta::Harta(Joc* joc) : ObiectJoc(joc, new sf::CircleShape()), _tiledHarta("dat
             }
             else {
                 bool areAbilitate = (v == 47);
+                nrDeMancaruri++;
                 obiect = new Mancare(joc, areAbilitate);
                 obiect->forma().setTexture(textura);
             }

@@ -30,4 +30,6 @@ public:
 
 	float secundePoarta = 3.f;
 
+
+	void coliziune(Player& player) override;
 };

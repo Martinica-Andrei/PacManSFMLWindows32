@@ -122,3 +122,16 @@ void Monstru::drumRandom() {
 		drum.pop();
 	}
 }
+
+
+void Monstru::coliziune(Player& player) {
+	auto rect = forma().getGlobalBounds();
+	if (rect.intersects(player.forma().getGlobalBounds())) {
+		if (esteInfricosat == false) {
+			_joc->eGameOver = true;
+		}
+		else {
+
+		}
+	}
+}

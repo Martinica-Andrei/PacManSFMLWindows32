@@ -72,9 +72,7 @@ void Player::update() {
 	}
 	auto rect = forma().getGlobalBounds();
 	for (auto& monstru : _joc->monstrii) {
-		if (rect.intersects(monstru->forma().getGlobalBounds())) {
-			_joc->eGameOver = true;
-		}
+		monstru->coliziune(*this);
 	}
 
 	if (_abilitateImunitate) {

@@ -32,7 +32,7 @@ Monstru::Monstru(Joc* joc, TIP_MONSTRU tipMonstru) : Entitate(joc), _animatieSus
 	_animatieStanga.secundePeFrame = 0.2;
 	_animatieSus.secundePeFrame = 0.2;
 	_animatieJos.secundePeFrame = 0.2;
-	forma().setScale(40, 40);
+	forma().setScale(32, 32);
 	forma().setTexture(_animatieSus.texturaCurenta());
 	forma().setOrigin(0.5, 0.5);
 	_velocitate = 100.f;

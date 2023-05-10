@@ -4,7 +4,7 @@
 #include "Monstru.h"
 Player::Player(Joc* joc) : Entitate(joc),
 _animatie(joc, { &joc->texturi.pacman_1, &joc->texturi.pacman_2 }, 25) {
-	forma().setScale(38, 38);
+	forma().setScale(30, 30);
 	forma().setOrigin(0.5, 0.5);
 	forma().setTexture(_animatie.texturaCurenta());
 	forma().setRotation(270);

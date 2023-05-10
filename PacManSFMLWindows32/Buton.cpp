@@ -6,6 +6,7 @@ Buton::Buton(Joc* joc) : ObiectJoc(joc, new sf::RectangleShape({ 1,1 })) {
 
 void Buton::update() {
 	auto mousePos = sf::Mouse::getPosition(*_joc->ecran());
+
 	if (forma().getGlobalBounds().contains(float(mousePos.x), float(mousePos.y))) {
 		if (_esteIntrat == false) {
 			intrare(*this);

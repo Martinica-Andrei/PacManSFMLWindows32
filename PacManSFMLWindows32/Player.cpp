@@ -77,7 +77,24 @@ void Player::update() {
 		}
 	}
 
-
+	if (_abilitateImunitate) {
+		_abilitateImunitate->update();
+		if (_abilitateImunitate->esteTerminat()) {
+			delete _abilitateImunitate;
+			_abilitateImunitate = nullptr;
+		}
+	}
 	hotare();
 
+}
+
+void Player::adaugareAbilitateImunitate() {
+	if (_abilitateImunitate) {
+		delete _abilitateImunitate;
+	}
+	_abilitateImunitate = new AbilitateImunitate(_joc);
+}
+
+Player::~Player() {
+	delete _abilitateImunitate;
 }

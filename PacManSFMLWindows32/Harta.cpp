@@ -30,7 +30,8 @@ Harta::Harta(Joc* joc) : ObiectJoc(joc, new sf::CircleShape()), _tiledHarta("dat
                 obiect = new Perete(joc, textura);
             }
             else {
-                obiect = new Mancare(joc);
+                bool areAbilitate = (v == 47);
+                obiect = new Mancare(joc, areAbilitate);
                 obiect->forma().setTexture(textura);
             }
             if (v == 44) {

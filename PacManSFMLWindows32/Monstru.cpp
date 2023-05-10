@@ -40,26 +40,32 @@ _animatieInfricosat1(joc), _animatieInfricosat2(joc) {
 	forma().setOrigin(0.5, 0.5);
 	_velocitate = 100.f;
 
-	_animatieInfricosat1.texturi = { &_joc->texturi.monstruInfricosat[0][0],&_joc->texturi.monstruInfricosat[0][1] };
-	_animatieInfricosat2.texturi = { &_joc->texturi.monstruInfricosat[0][2],&_joc->texturi.monstruInfricosat[0][3] };
+	_animatieInfricosat1.texturi = { &tex.monstruInfricosat[0][0],&tex.monstruInfricosat[0][1] };
+	_animatieInfricosat2.texturi = { &tex.monstruInfricosat[0][2],&tex.monstruInfricosat[0][3] };
 }
 
 void Monstru::updateAnimatie() {
-	if (directieCurenta() == DIR::sus) {
-		_animatieSus.update();
-		forma().setTexture(_animatieSus.texturaCurenta());
+	if (esteInfricosat == false) {
+		if (directieCurenta() == DIR::sus) {
+			_animatieSus.update();
+			forma().setTexture(_animatieSus.texturaCurenta());
+		}
+		else if (directieCurenta() == DIR::dreapta) {
+			_animatieDreapta.update();
+			forma().setTexture(_animatieDreapta.texturaCurenta());
+		}
+		else if (directieCurenta() == DIR::jos) {
+			_animatieJos.update();
+			forma().setTexture(_animatieJos.texturaCurenta());
+		}
+		else if (directieCurenta() == DIR::stanga) {
+			_animatieStanga.update();
+			forma().setTexture(_animatieStanga.texturaCurenta());
+		}
 	}
-	else if (directieCurenta() == DIR::dreapta) {
-		_animatieDreapta.update();
-		forma().setTexture(_animatieDreapta.texturaCurenta());
-	}
-	else if (directieCurenta() == DIR::jos) {
-		_animatieJos.update();
-		forma().setTexture(_animatieJos.texturaCurenta());
-	}
-	else if (directieCurenta() == DIR::stanga) {
-		_animatieStanga.update();
-		forma().setTexture(_animatieStanga.texturaCurenta());
+	else {
+		_animatieInfricosat1.update();
+		forma().setTexture(_animatieInfricosat1.texturaCurenta());
 	}
 }
 void Monstru::update() {

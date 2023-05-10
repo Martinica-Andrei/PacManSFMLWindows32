@@ -1,6 +1,6 @@
 #pragma once
 #include "ObiectJoc.h"
-class EventTimp : ObiectJoc{
+class EventTimp : public ObiectJoc{
 	using functie = void (EventTimp::*)();
 private:
 	float _contor = 0;

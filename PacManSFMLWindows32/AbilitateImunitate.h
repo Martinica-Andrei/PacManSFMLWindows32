@@ -2,10 +2,11 @@
 #include "EventTimp.h"
 class AbilitateImunitate : public EventTimp {
 private:
-public:
-
-	AbilitateImunitate(Joc* joc);
+protected:
 	void _startEfect() override;
 	void _updateEfect() override;
 	void _sfarsitEfect() override;
+public:
+
+	AbilitateImunitate(Joc* joc);
 };

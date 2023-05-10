@@ -12,6 +12,7 @@ private:
 
 	float _contorSecundePoarta = 0;
 public:
+	bool esteInfricosat;
 	enum class TIP_MONSTRU {
 		albastru=0,
 		roz=1,

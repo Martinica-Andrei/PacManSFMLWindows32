@@ -168,13 +168,13 @@ void Monstru::coliziune(Player& player) {
 void Monstru::activareInfricosare() {
 	if (_esteRespawn == false) {
 		_esteInfricosat = true;
+		_animatiiInfricosatIndex = 0;
 		_velocitate = _velocitateInfricosat;
 	}
 }
 void Monstru::dezactivareInfricosare() {
 	if (_esteInfricosat) {
 		_esteInfricosat = false;
-		_animatiiInfricosatIndex = 0;
 		_velocitate = _velocitateNormala;
 	}
 }

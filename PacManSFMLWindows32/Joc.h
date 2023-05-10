@@ -43,7 +43,7 @@ public:
 
 	void start();
 	void sfarsit();
-	void resetare();
 	void nivelNou();
+	void reincarcareEntitati();
 	void adaugaMonstru(Monstru* monstru);
 };

@@ -78,10 +78,39 @@ void Joc::nivelNou() {
 	start();
 }
 
+void Joc::reincarcareEntitati() {
+	for (int i = 0; i < obiecte.size();) {
+		ObiectJoc* obiect = obiecte[i];
+		// folosesc dynamic casting deoarece nu stiu tipul obiectul, dorind sa sterg doar monstrii si player-ul
+		Monstru* monstru = dynamic_cast<Monstru*>(obiect);
+		Player* player = dynamic_cast<Player*>(obiect);
+		// dynamic_cast returneaza null daca convertirea nu e valida , iar delete cu null este ok
+		delete monstru;
+		delete player;
+		if (monstru || player) {
+			obiecte.erase(obiecte.begin() + i);
+		}
+		else {
+			i++;
+		}
+	}
+	monstrii.clear();
+	player = new Player(this);
+	obiecte.push_back(player);
+	creareMonstrii();
+	eGameOver = false;
+}
+
 void Joc::update() {
 	if (eGameOver) {
-		sfarsit();
-		meniuPrincipal->activeaza();
+		if (hud->vieti() > 0) {
+			reincarcareEntitati();
+			hud->decrementareViata();
+		}
+		else {
+			sfarsit();
+			meniuPrincipal->activeaza();
+		}
 	}
 	if (meniuPrincipal->esteActiv()) {
 		meniuPrincipal->update();
@@ -151,8 +180,4 @@ void Joc::sfarsit() {
 	hud->resetare();
 	_nivel = 1;
 
-}
-void Joc::resetare() {
-	sfarsit();
-	start();
 }

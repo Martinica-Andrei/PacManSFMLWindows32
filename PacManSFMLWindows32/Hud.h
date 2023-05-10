@@ -4,6 +4,7 @@
 class Hud : public ObiectJoc {
 private:
 	sf::Text _textScor;
+	std::vector<ObiectJoc*> _vieti;
 	int _scor = 0;
 public:
 
@@ -14,4 +15,14 @@ public:
 
 	void desenare() override;
 	void resetare();
+	int vieti() {
+		return _vieti.size();
+	}
+
+	void decrementareViata() {
+		if (_vieti.size()) {
+			delete _vieti.back();
+			_vieti.pop_back();
+		}
+	}
 };

@@ -132,6 +132,7 @@ void Joc::sfarsit() {
 	}
 	obiecte.clear();
 	monstrii.clear();
+	hud->resetare();
 
 }
 void Joc::resetare() {

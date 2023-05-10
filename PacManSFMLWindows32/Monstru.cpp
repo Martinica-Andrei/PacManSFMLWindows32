@@ -186,7 +186,7 @@ void Monstru::respawn() {
 	_esteRespawn = true;
 	_esteInfricosat = false;
 	_velocitate = _velocitateRespawn;
-	drum = drumCatreCoordonate(15, 11);
+	drum = drumCatreCoordonate(14 + rand() % 2, 11 + rand() % 6);
 	if (drum.size()) {
 		setareDirectieCurenta(drum.top());
 		drum.pop();

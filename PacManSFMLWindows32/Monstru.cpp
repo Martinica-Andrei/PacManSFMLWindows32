@@ -32,7 +32,8 @@ Monstru::Monstru(Joc* joc, TIP_MONSTRU tipMonstru) : Entitate(joc), _animatieSus
 	_animatieStanga.secundePeFrame = 0.2;
 	_animatieSus.secundePeFrame = 0.2;
 	_animatieJos.secundePeFrame = 0.2;
-	forma().setScale(32, 32);
+	auto marimeEcran = _joc->ecran()->getSize();
+	forma().setScale(32.f * marimeEcran.x / 800, 32.f * marimeEcran.y / 600);
 	forma().setTexture(_animatieSus.texturaCurenta());
 	forma().setOrigin(0.5, 0.5);
 	_velocitate = _velocitateNormala;
@@ -154,13 +155,16 @@ void Monstru::drumRandom() {
 
 void Monstru::coliziune(Player& player) {
 	if (_esteRespawn) return;
+	auto pozitiePlayer = player.coordonateMatrice();
+	auto pozitie = coordonateMatrice();
 	auto rect = forma().getGlobalBounds();
-	if (rect.intersects(player.forma().getGlobalBounds())) {
+	if (pozitiePlayer == pozitie) {
 		if (_esteInfricosat == false) {
 			_joc->eGameOver = true;
 		}
 		else {
 			respawn();
+			player.mancatCombo *= 2;
 		}
 	}
 }

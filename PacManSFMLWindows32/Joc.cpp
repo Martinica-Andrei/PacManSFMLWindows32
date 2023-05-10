@@ -5,8 +5,9 @@
 Joc::Joc() {
     srand(time(0));
     font.loadFromFile("data\\fonts\\arial.ttf");
-    _meniuPrincipal = new MeniuPrincipal(this);
-    _meniuPrincipal->activeaza();
+    meniuPrincipal = new MeniuPrincipal(this);
+    meniuPrincipal->activeaza();
+    hud = new Hud(this);
     _ecran->setFramerateLimit(frameratePeSecunda);
   
 }
@@ -36,7 +37,8 @@ void Joc::creareMonstrii() {
 Joc::~Joc() {
     delete _ecran;
     sfarsit();
-    delete _meniuPrincipal;
+    delete meniuPrincipal;
+    delete hud;
 }
 void Joc::init() {
     sf::Clock ceas;
@@ -68,10 +70,10 @@ void Joc::init() {
 void Joc::update() {
     if (eGameOver) {
         sfarsit();
-        _meniuPrincipal->activeaza();
+        meniuPrincipal->activeaza();
     }
-    if (_meniuPrincipal->esteActiv()) {
-        _meniuPrincipal->update();
+    if (meniuPrincipal->esteActiv()) {
+        meniuPrincipal->update();
     }
     else {
         for (int i = 0; i < obiecte.size();) {
@@ -90,13 +92,14 @@ void Joc::update() {
 }
 void Joc::desenare() {
     _ecran->clear();
-    if (_meniuPrincipal->esteActiv()) {
-        _meniuPrincipal->desenare();
+    if (meniuPrincipal->esteActiv()) {
+        meniuPrincipal->desenare();
     }
     else {
         for (int i = 0; i < obiecte.size(); i++) {
             obiecte[i]->desenare();
         }
+        hud->desenare();
     }
     _ecran->display();
 }
@@ -104,7 +107,7 @@ void Joc::desenare() {
 
 void Joc::start() {
     eGameOver = false;
-    _meniuPrincipal->dezactiveaza();
+    meniuPrincipal->dezactiveaza();
     harta = new Harta(this);
     obiecte.push_back(harta);
     player = new Player(this);

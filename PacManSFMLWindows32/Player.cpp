@@ -4,11 +4,11 @@
 #include "Monstru.h"
 Player::Player(Joc* joc) : Entitate(joc),
 _animatie(joc, { &joc->texturi.pacman_1, &joc->texturi.pacman_2 }, 10) {
-	forma().setScale(30, 30);
+	auto marimeEcran = _joc->ecran()->getSize();
+	forma().setScale(30.f * marimeEcran.x / 800, 30.f * marimeEcran.y / 600);
 	forma().setOrigin(0.5, 0.5);
 	forma().setTexture(_animatie.texturaCurenta());
 	forma().setRotation(270);
-	sf::Vector2f pozitie = { 400, 585 };
 	forma().setPosition(joc->harta->iaCoordonataColoana(14) + joc->harta->lungimePeColoana() / 2,
 		joc->harta->iaCoordonataRand(23) + joc->harta->inaltimePeRand() / 2);
 	_velocitate = 150.f;
@@ -91,6 +91,7 @@ void Player::adaugareAbilitateImunitate() {
 		delete _abilitateImunitate;
 	}
 	_abilitateImunitate = new AbilitateImunitate(_joc);
+	mancatCombo = 200;
 }
 
 Player::~Player() {

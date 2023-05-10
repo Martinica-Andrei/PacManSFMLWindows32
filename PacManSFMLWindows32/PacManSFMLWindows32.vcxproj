@@ -146,6 +146,7 @@
     <ClCompile Include="Entitate.cpp" />
     <ClCompile Include="EventTimp.cpp" />
     <ClCompile Include="Harta.cpp" />
+    <ClCompile Include="Hud.cpp" />
     <ClCompile Include="Joc.cpp" />
     <ClCompile Include="JsonParser.cpp" />
     <ClCompile Include="Mancare.cpp" />
@@ -167,6 +168,7 @@
     <ClInclude Include="Entitate.h" />
     <ClInclude Include="EventTimp.h" />
     <ClInclude Include="Harta.h" />
+    <ClInclude Include="Hud.h" />
     <ClInclude Include="Joc.h" />
     <ClInclude Include="JsonParser.h" />
     <ClInclude Include="Mancare.h" />

@@ -5,6 +5,7 @@
 #include "Harta.h"
 #include <random>
 #include "MeniuPrincipal.h"
+#include "Hud.h"
 class ObiectJoc;
 class Player;
 class Monstru;
@@ -15,14 +16,16 @@ private:
 	float _milisecundePeFrame = 1.f / frameratePeSecunda;
 public:
 	bool eGameOver = false;
+	bool eFreeze = false;
 	sf::Font font;
-	Harta* harta;
+	Harta* harta = nullptr;
+	Hud* hud;
 	const Texturi texturi;
-	MeniuPrincipal* _meniuPrincipal;
 	std::vector<ObiectJoc*> obiecte;
 	std::vector<Monstru*> monstrii;
+	MeniuPrincipal* meniuPrincipal;
 	float timpDeLaUltimulFrame = 0;
-	Player* player;
+	Player* player = nullptr;
 	~Joc();
 
 	Joc();

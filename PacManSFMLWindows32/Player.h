@@ -11,7 +11,9 @@ private:
 	sf::Vector2f _pozitieCurenta;
 
 	AbilitateImunitate* _abilitateImunitate;
+	
 public:
+	int mancatCombo = 200;
 	Player(Joc* joc);
 	~Player();
 	void miscare();
@@ -19,4 +21,5 @@ public:
 	void update() override;
 
 	void adaugareAbilitateImunitate();
+
 };

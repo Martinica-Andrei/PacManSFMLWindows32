@@ -9,6 +9,10 @@ void Mancare::coliziune(Player& player) {
 	eSters = true;
 	if (_areAbilitate) {
 		player.adaugareAbilitateImunitate();
+		_joc->hud->adaugareScor(50);
+	}
+	else {
+		_joc->hud->adaugareScor(10);
 	}
 
 }

@@ -8,7 +8,7 @@ private:
 	Animatie _animatieJos;
 	Animatie _animatieStanga;
 	std::vector<Animatie> _animatiiInfricosat;
-	int _animatiiInfricosatIndex;
+	int _animatiiInfricosatIndex = 0;
 	float _contorSecundePoarta = 0;
 	bool _esteInfricosat = false;
 	bool _esteRespawn = false;

@@ -10,16 +10,25 @@ private:
 	Animatie _animatie;
 	sf::Vector2f _pozitieCurenta;
 
-	AbilitateImunitate* _abilitateImunitate;
-	
+	AbilitateImunitate* _abilitateImunitate = nullptr;
+	EventTimp _oprireTimp {_joc};
+	sf::Text _textScorMancatMonstru;
+	int _mancatCombo = 200;
+	Monstru* _monstruMancat = nullptr;
 public:
-	int mancatCombo = 200;
 	Player(Joc* joc);
 	~Player();
 	void miscare();
 	void input();
 	void update() override;
+	void updateCandEFreeze() override;
 
 	void adaugareAbilitateImunitate();
 
+	void manancaMonstru(Monstru* monstru);
+	bool poateMancaMonstru() {
+		return (_monstruMancat == nullptr);
+	}
+
+	void desenare() override;
 };

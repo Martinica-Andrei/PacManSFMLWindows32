@@ -28,6 +28,7 @@ public:
 
 	virtual void desenare();
 	virtual void update() {}
+	virtual void updateCandEFreeze() {};
 
 	virtual void coliziune(Player& player){}
 	virtual void coliziune(Monstru& monstru){}

@@ -163,8 +163,7 @@ void Monstru::coliziune(Player& player) {
 			_joc->eGameOver = true;
 		}
 		else {
-			respawn();
-			player.mancatCombo *= 2;
+			player.manancaMonstru(this);
 		}
 	}
 }

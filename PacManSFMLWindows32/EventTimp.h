@@ -28,6 +28,10 @@ public:
 		return (_funcCurent == &EventTimp::_functieTerminata);
 	}
 
+	void terminare() {
+		_funcCurent = &EventTimp::_functieTerminata;
+	}
+
 	void resetare();
 
 	float contor() {

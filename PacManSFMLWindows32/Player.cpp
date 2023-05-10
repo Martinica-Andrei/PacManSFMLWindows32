@@ -12,8 +12,33 @@ _animatie(joc, { &joc->texturi.pacman_1, &joc->texturi.pacman_2 }, 10) {
 	forma().setPosition(joc->harta->iaCoordonataColoana(14) + joc->harta->lungimePeColoana() / 2,
 		joc->harta->iaCoordonataRand(23) + joc->harta->inaltimePeRand() / 2);
 	_velocitate = 150.f;
-}
 
+	_textScorMancatMonstru.setFont(joc->font);
+	_textScorMancatMonstru.setCharacterSize(25);
+	_textScorMancatMonstru.setFillColor(sf::Color::Blue);
+
+	_oprireTimp.terminare();
+	_oprireTimp.secundePanaLaTerminare = 1;
+	_oprireTimp.startEfect = [this]() {
+		_joc->eFreeze = true;
+		forma().setFillColor({ 255, 255, 255, 0 });
+		_monstruMancat->forma().setFillColor({ 255, 255, 255, 0 });
+		_textScorMancatMonstru.setFillColor({ 255, 255, 255, 255 });
+		_textScorMancatMonstru.setPosition(_monstruMancat->pos.x - _monstruMancat->scale.x, _monstruMancat->pos.y - _monstruMancat->scale.y);
+		_textScorMancatMonstru.setString(std::to_string(_mancatCombo));
+	};
+	_oprireTimp.sfarsitEfect = [this]() {
+		forma().setFillColor({ 255, 255, 255, 255 });
+		_monstruMancat->forma().setFillColor({ 255, 255, 255, 255 });
+		_textScorMancatMonstru.setFillColor({ 255, 255, 255, 0 });
+		_joc->eFreeze = false;
+		_monstruMancat = nullptr;
+	};
+}
+void Player::desenare() {
+	ObiectJoc::desenare();
+	_joc->ecran()->draw(_textScorMancatMonstru);
+}
 void Player::miscare() {
 	_pozitieCurenta = pos;
 	Entitate::miscare();
@@ -23,7 +48,6 @@ void Player::miscare() {
 }
 
 void Player::input() {
-	if (_joc->eFreeze) return;
 	int rand = _joc->harta->iaRand(pos.y);
 	int coloana = _joc->harta->iaColoana(pos.x);
 	ObiectJoc* sus = _joc->harta->iaObiect(rand - 1, coloana);
@@ -54,8 +78,6 @@ void Player::input() {
 			setareDirectieCurenta(DIR::stanga);
 		}
 	}
-
-
 
 }
 
@@ -94,9 +116,23 @@ void Player::adaugareAbilitateImunitate() {
 		delete _abilitateImunitate;
 	}
 	_abilitateImunitate = new AbilitateImunitate(_joc);
-	mancatCombo = 200;
+	_mancatCombo = 200;
 }
 
 Player::~Player() {
 	delete _abilitateImunitate;
+}
+
+void Player::manancaMonstru(Monstru* monstru) {
+	if (poateMancaMonstru() == false) return;
+	monstru->respawn();
+	_monstruMancat = monstru;
+	_oprireTimp.resetare();
+	_oprireTimp.update();
+	_joc->hud->adaugareScor(_mancatCombo);
+	_mancatCombo *= 2;
+}
+
+void Player::updateCandEFreeze() {
+	_oprireTimp.update();
 }

@@ -19,3 +19,7 @@ void Hud::adaugareScor(int val) {
 void Hud::desenare() {
 	_joc->ecran()->draw(_textScor);
 }
+
+void Hud::resetare() {
+	adaugareScor(-_scor);
+}

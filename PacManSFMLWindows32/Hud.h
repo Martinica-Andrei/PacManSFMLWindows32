@@ -13,4 +13,5 @@ public:
 	void adaugareScor(int val);
 
 	void desenare() override;
+	void resetare();
 };

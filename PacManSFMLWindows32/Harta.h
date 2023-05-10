@@ -1,7 +1,8 @@
 #pragma once
 #include "Tiled.h"
 #include "ObiectJoc.h"
-#include <iostream>
+#include "EventTimp.h"
+class Perete;
 class Harta : public ObiectJoc {
 private:
 	Tiled _tiledHarta;
@@ -11,6 +12,10 @@ private:
 	float _inaltimePeRand; 
 	float _startY = 80;
 
+	EventTimp _eventClipire{ _joc };
+	EventTimp _eventClipireInterval{ _joc };
+	int _indexClipire;
+	std::vector<Perete*> _pereti;
 public:
 	int nrDeMancaruri;
 	std::vector<std::vector<ObiectJoc*>> matrice;
@@ -62,4 +67,6 @@ public:
 
 
 	void coliziune(Player& player) override;
+
+	void updateCandEFreeze() override;
 };

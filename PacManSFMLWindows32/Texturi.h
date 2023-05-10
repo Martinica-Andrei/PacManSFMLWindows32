@@ -13,6 +13,7 @@ public:
 	sf::Texture cutieColiziune;
 	sf::Texture background;
 	std::vector<std::vector<sf::Texture>> harta;
+	std::vector<std::vector<sf::Texture>> hartaClipire;
 	std::vector<std::vector<sf::Texture>> monstruRosu;
 	std::vector<std::vector<sf::Texture>> monstruRoz;
 	std::vector<std::vector<sf::Texture>> monstruAlbastru;

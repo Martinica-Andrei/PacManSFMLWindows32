@@ -11,19 +11,17 @@ void EventTimp::update() {
 void EventTimp::_inceput() {
 	_funcCurent = &EventTimp::_update;
 	startEfect();
+	_update();
 }
 void EventTimp::_update() {
 	_contor += _joc->timpDeLaUltimulFrame;
 	if (_contor >= secundePanaLaTerminare) {
-		_funcCurent = &EventTimp::_sfarsit;
+		_funcCurent = &EventTimp::_functieTerminata;
+		sfarsitEfect();
 	}
 	else {
 		updateEfect();
 	}
-}
-void EventTimp::_sfarsit() {
-	_funcCurent = &EventTimp::_functieTerminata;
-	sfarsitEfect();
 }
 
 void EventTimp::resetare() {

@@ -22,7 +22,11 @@ Harta::Harta(Joc* joc) : ObiectJoc(joc, new sf::CircleShape()), _tiledHarta("dat
             const sf::Texture* textura = &joc->texturi.harta[texturaRand][texturaColoana];
             ObiectJoc* obiect;
             if (v < 45) {
-                obiect = new Perete(joc, textura);
+                Perete* perete = new Perete(joc, textura);
+                _pereti.push_back(perete);
+                perete->texturaRand = texturaRand;
+                perete->texturaColoana = texturaColoana;
+                obiect = perete;
             }
             else {
                 bool areAbilitate = (v == 47);
@@ -38,9 +42,42 @@ Harta::Harta(Joc* joc) : ObiectJoc(joc, new sf::CircleShape()), _tiledHarta("dat
             obiect->forma().setScale(_lungimePeColoana, _inaltimePeRand);
         }
     }
+
+    _eventClipire.terminare();
+    _eventClipire.secundePanaLaTerminare = 4;
+    _eventClipireInterval.secundePanaLaTerminare = 0.4f;
+    _eventClipireInterval.sfarsitEfect = [this]() {
+        _indexClipire++;
+        if (_indexClipire > 2) {
+            _indexClipire = 0;
+        }
+        const std::vector<std::vector<sf::Texture>>* tipHarta = &_joc->texturi.harta;
+        if (_indexClipire == 1) {
+            tipHarta = &_joc->texturi.hartaClipire;
+        }
+        for (auto& perete : _pereti) {
+            perete->forma().setTexture(&(*tipHarta)[perete->texturaRand][perete->texturaColoana]);
+        }
+        _eventClipireInterval.resetare();
+    };
+    _eventClipire.startEfect = [this]() {
+        _joc->eFreeze = true;
+    };
+    _eventClipire.updateEfect = [this]() {
+        _eventClipireInterval.update();
+    };
+    _eventClipire.sfarsitEfect = [this]() {     
+        _joc->eFreeze = false;
+        _joc->incepeNivelNou = true;
+    };
 }
 
 void Harta::update() {
+    if (nrDeMancaruri == 0 && _eventClipire.esteTerminat()) {
+        _eventClipire.resetare();
+        _eventClipire.update();
+        return;
+    }
     for (int r = 0; r < _randuri; r++) {
         for (int c = 0; c < _coloane;c++) {
             ObiectJoc* obiect = matrice[r][c];
@@ -113,4 +150,8 @@ void Harta::coliziune(Player& player) {
             }
         }
     }
+}
+
+void Harta::updateCandEFreeze() {
+    _eventClipire.update();
 }

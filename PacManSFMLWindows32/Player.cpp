@@ -37,6 +37,8 @@ _animatie(joc, { &joc->texturi.pacman_1, &joc->texturi.pacman_2 }, 10) {
 
 	hotarXStanga = scale.x / 2;
 	hotarXDreapta = joc->ecran()->getSize().x + scale.x / 2;
+
+	_velocitate = 400.f;
 }
 void Player::desenare() {
 	ObiectJoc::desenare();

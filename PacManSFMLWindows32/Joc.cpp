@@ -75,6 +75,7 @@ void Joc::init() {
 
 void Joc::nivelNou() {
 	_nivel++;
+	incepeNivelNou = false;
 	start();
 }
 
@@ -116,9 +117,12 @@ void Joc::update() {
 		meniuPrincipal->update();
 	}
 	else if (eFreeze == false) {
-		if (harta->nrDeMancaruri == 0) {
+		if (incepeNivelNou) {
 			nivelNou();
 		}
+	/*	if (harta->nrDeMancaruri == 0) {
+			nivelNou();
+		}*/
 		for (int i = 0; i < obiecte.size();) {
 			ObiectJoc* obiect = obiecte[i];
 			if (obiect->eSters == true) {

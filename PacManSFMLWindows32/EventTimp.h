@@ -7,7 +7,6 @@ private:
 	float _contor = 0;
 	void _inceput();
 	void _update();
-	void _sfarsit();
 	functie _funcCurent = &EventTimp::_inceput;
 	// functie care face absolut nimic
 	void _functieTerminata() {

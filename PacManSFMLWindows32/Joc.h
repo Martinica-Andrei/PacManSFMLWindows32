@@ -18,6 +18,7 @@ private:
 public:
 	bool eGameOver = false;
 	bool eFreeze = false;
+	bool incepeNivelNou = false;
 	sf::Font font;
 	Harta* harta = nullptr;
 	Hud* hud;

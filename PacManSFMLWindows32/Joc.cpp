@@ -8,16 +8,12 @@ Joc::Joc() {
     _meniuPrincipal = new MeniuPrincipal(this);
     _meniuPrincipal->activeaza();
     _ecran->setFramerateLimit(frameratePeSecunda);
-    harta = new Harta(this);
-    obiecte.push_back(harta);
-    player = new Player(this);
-    player->hotarXStanga = -player->scale.x / 2;
-    player->hotarXDreapta = _ecran->getSize().x + player->scale.x / 2;
-    obiecte.push_back(player);
-    creareMonstrii();
     
 }
-
+void Joc::adaugaMonstru(Monstru* monstru) {
+    obiecte.push_back(monstru);
+    monstrii.push_back(monstru);
+}
 
 void Joc::creareMonstrii() {
     Monstru* albastru = new Monstru(this, Monstru::TIP_MONSTRU::albastru);
@@ -28,22 +24,21 @@ void Joc::creareMonstrii() {
     galben->setareCoordonate(14, 16);
     Monstru* rosu = new Monstru(this, Monstru::TIP_MONSTRU::rosu);
     rosu->setareCoordonate(11, 12);
-    obiecte.push_back(albastru);
+    adaugaMonstru(albastru);
+    adaugaMonstru(roz);
+    adaugaMonstru(galben);
+    adaugaMonstru(rosu);
     albastru->secundePoarta = 2.f;
-    obiecte.push_back(roz);
     roz->secundePoarta = 4.f;
-    obiecte.push_back(galben);
     galben->secundePoarta = 6.f;
-    obiecte.push_back(rosu);
 }
 
 Joc::~Joc() {
     delete _ecran;
-    for (auto& obiect : obiecte) {
-        delete obiect;
-    }
+    sfarsit();
+    delete _meniuPrincipal;
 }
-void Joc::start() {
+void Joc::init() {
     sf::Clock ceas;
     while (_ecran->isOpen())
     {
@@ -71,6 +66,10 @@ void Joc::start() {
     }
 }
 void Joc::update() {
+    if (eGameOver) {
+        sfarsit();
+        _meniuPrincipal->activeaza();
+    }
     if (_meniuPrincipal->esteActiv()) {
         _meniuPrincipal->update();
     }
@@ -100,4 +99,29 @@ void Joc::desenare() {
         }
     }
     _ecran->display();
+}
+
+
+void Joc::start() {
+    eGameOver = false;
+    _meniuPrincipal->dezactiveaza();
+    harta = new Harta(this);
+    obiecte.push_back(harta);
+    player = new Player(this);
+    player->hotarXStanga = -player->scale.x / 2;
+    player->hotarXDreapta = _ecran->getSize().x + player->scale.x / 2;
+    obiecte.push_back(player);
+    creareMonstrii();
+}
+void Joc::sfarsit() {
+    for (auto& obiect : obiecte) {
+        delete obiect;
+    }
+    obiecte.clear();
+    monstrii.clear();
+
+}
+void Joc::resetare() {
+    sfarsit();
+    start();
 }

@@ -7,6 +7,7 @@ enum class TIPURI_OBIECTE {
 };
 class Joc;
 class Player;
+class Monstru;
 class ObiectJoc {
 private:
 	sf::Shape* _forma; // pointer unic , fiecare obiect in parte are propria lui forma
@@ -29,5 +30,6 @@ public:
 	virtual void update() {}
 
 	virtual void coliziune(Player& player){}
+	virtual void coliziune(Monstru& monstru){}
 };
 

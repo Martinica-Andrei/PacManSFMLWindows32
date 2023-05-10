@@ -1,6 +1,7 @@
 #include "Player.h"
 #include "Joc.h"
 #include <iostream>
+#include "Monstru.h"
 Player::Player(Joc* joc) : Entitate(joc),
 _animatie(joc, { &joc->texturi.pacman_1, &joc->texturi.pacman_2 }, 25) {
 	forma().setScale(38, 38);
@@ -68,6 +69,12 @@ void Player::update() {
 	ObiectJoc* centru = _joc->harta->iaObiect(rand, coloana);
 	if (centru != nullptr) {
 		centru->coliziune(*this);
+	}
+	auto rect = forma().getGlobalBounds();
+	for (auto& monstru : _joc->monstrii) {
+		if (rect.intersects(monstru->forma().getGlobalBounds())) {
+			_joc->eGameOver = true;
+		}
 	}
 	hotare();
 

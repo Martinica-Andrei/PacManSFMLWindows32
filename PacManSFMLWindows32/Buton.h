@@ -1,15 +1,14 @@
 #pragma once
 #include "ObiectJoc.h"
-class Buton;
-using FunctieButon = void (*)(Buton&);
+#include <functional>
 
 class Buton : public ObiectJoc {
 private:
 	bool _esteIntrat = false;
 public:
-	FunctieButon click = nullptr;
-	FunctieButon intrare = nullptr;
-	FunctieButon iesire = nullptr;
+	std::function<void(Buton&)> click;
+	std::function<void(Buton&)> intrare;
+	std::function<void(Buton&)> iesire;
 	sf::Text text;
 	Buton(Joc* joc);
 

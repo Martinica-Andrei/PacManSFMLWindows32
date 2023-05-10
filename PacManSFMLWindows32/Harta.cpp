@@ -103,3 +103,17 @@ std::vector<ObiectJoc*> Harta::iaArieUnu(float x, float y) {
     raspuns.push_back(matrice[rand][coloana - 1]);
     return raspuns;
 }
+
+void Harta::coliziune(Player& player) {
+    for (int r = 0; r < _randuri; r++) {
+        for (int c = 0; c < _coloane; c++) {
+            if (c == 6 && r == 23) {
+                int debug = 1;
+            }
+            ObiectJoc* obiect = matrice[r][c];
+            if (obiect) {
+                obiect->coliziune(player);
+            }
+        }
+    }
+}

@@ -4,7 +4,7 @@
 int main()
 {
     Joc joc;
-    joc.start();
+    joc.init();
 
     return 0;
 }

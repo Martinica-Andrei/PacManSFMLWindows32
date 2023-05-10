@@ -59,4 +59,6 @@ public:
 	};
 	std::vector<ObiectJoc*> iaArieUnu(float x, float y);
 
+
+	void coliziune(Player& player) override;
 };

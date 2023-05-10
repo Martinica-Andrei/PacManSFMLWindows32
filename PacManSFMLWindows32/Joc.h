@@ -7,17 +7,20 @@
 #include "MeniuPrincipal.h"
 class ObiectJoc;
 class Player;
+class Monstru;
 class Joc {
 private:
 	sf::RenderWindow* _ecran = new sf::RenderWindow(sf::VideoMode(800, 800), "Martinica Andrei-Marian Pac-Man");
 	int frameratePeSecunda = 75;
 	float _milisecundePeFrame = 1.f / frameratePeSecunda;
 public:
+	bool eGameOver = false;
 	sf::Font font;
 	Harta* harta;
 	const Texturi texturi;
 	MeniuPrincipal* _meniuPrincipal;
 	std::vector<ObiectJoc*> obiecte;
+	std::vector<Monstru*> monstrii;
 	float timpDeLaUltimulFrame = 0;
 	Player* player;
 	~Joc();
@@ -27,11 +30,16 @@ public:
 	sf::RenderWindow* ecran() {
 		return _ecran;
 	}
-	void start();
+	void init();
 
 	void update();
 	void desenare();
 
 	void creareMonstrii();
 
+	void start();
+	void sfarsit();
+	void resetare();
+
+	void adaugaMonstru(Monstru* monstru);
 };

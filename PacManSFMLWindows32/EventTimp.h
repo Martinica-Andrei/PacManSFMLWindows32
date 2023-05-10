@@ -1,5 +1,6 @@
 #pragma once
 #include "ObiectJoc.h"
+#include <functional>
 class EventTimp : public ObiectJoc{
 	using functie = void (EventTimp::*)();
 private:
@@ -12,17 +13,24 @@ private:
 	void _functieTerminata() {
 
 	}
-protected:
-	virtual void _startEfect(){}
-	virtual void _updateEfect(){}
-	virtual void _sfarsitEfect(){}
 public:
 	float secundePanaLaTerminare = 0;
+
+	std::function<void()> startEfect = []() {};
+	std::function<void()> updateEfect = []() {};
+	std::function<void()> sfarsitEfect = []() {};
+
 	EventTimp(Joc* joc);
 
 	void update() override;
 
 	bool esteTerminat() {
 		return (_funcCurent == &EventTimp::_functieTerminata);
+	}
+
+	void resetare();
+
+	float contor() {
+		return _contor;
 	}
 };

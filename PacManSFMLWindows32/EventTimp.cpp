@@ -9,8 +9,8 @@ void EventTimp::update() {
 }
 
 void EventTimp::_inceput() {
-	_startEfect();
 	_funcCurent = &EventTimp::_update;
+	startEfect();
 }
 void EventTimp::_update() {
 	_contor += _joc->timpDeLaUltimulFrame;
@@ -18,10 +18,15 @@ void EventTimp::_update() {
 		_funcCurent = &EventTimp::_sfarsit;
 	}
 	else {
-		_updateEfect();
+		updateEfect();
 	}
 }
 void EventTimp::_sfarsit() {
-	_sfarsitEfect();
 	_funcCurent = &EventTimp::_functieTerminata;
+	sfarsitEfect();
+}
+
+void EventTimp::resetare() {
+	_funcCurent = &EventTimp::_inceput;
+	_contor = 0;
 }

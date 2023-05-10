@@ -2,6 +2,15 @@
 #include "Joc.h"
 Buton::Buton(Joc* joc) : ObiectJoc(joc, new sf::RectangleShape({ 1,1 })) {
 	text.setFont(joc->font);
+	iesire = [](Buton& buton) {
+		buton.forma().setFillColor(sf::Color::White);
+		buton.text.setFillColor(sf::Color::Black);
+	};
+	intrare = [](Buton& buton) {
+		buton.forma().setFillColor(sf::Color(128, 128, 128));
+		buton.text.setFillColor(sf::Color::White);
+	};
+	click = [](Buton& buton) {};
 }
 
 void Buton::update() {

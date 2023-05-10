@@ -20,14 +20,6 @@ MeniuPrincipal::MeniuPrincipal(Joc* joc) : ObiectJoc(joc, new sf::RectangleShape
 	_butonJoaca->click = [this](Buton& buton) {
 		_joc->start();
 	};
-	_butonJoaca->iesire = [](Buton& buton) {
-		buton.forma().setFillColor(sf::Color::White);
-		buton.text.setFillColor(sf::Color::Black);
-	};
-	_butonJoaca->intrare = [](Buton& buton) {
-		buton.forma().setFillColor(sf::Color(128,128,128));
-		buton.text.setFillColor(sf::Color::White);
-	};
 }
 
 void MeniuPrincipal::desenare() {

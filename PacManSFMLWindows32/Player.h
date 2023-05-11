@@ -11,11 +11,13 @@ private:
 	sf::Vector2f _pozitieCurenta;
 
 	AbilitateImunitate* _abilitateImunitate = nullptr;
-	EventTimp _oprireTimp {_joc};
+	EventTimp _eventOprireTimp {_joc};
+	EventTimp _eventGameOver{ _joc };
 	sf::Text _textScorMancatMonstru;
 	int _mancatCombo = 200;
 	Monstru* _monstruMancat = nullptr;
 public:
+	void rulareEventGameOver();
 	Player(Joc* joc);
 	~Player();
 	void miscare();

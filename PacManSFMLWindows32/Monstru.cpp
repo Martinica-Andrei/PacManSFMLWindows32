@@ -160,7 +160,7 @@ void Monstru::coliziune(Player& player) {
 	auto rect = forma().getGlobalBounds();
 	if (pozitiePlayer == pozitie) {
 		if (_esteInfricosat == false) {
-			_joc->eGameOver = true;
+			player.rulareEventGameOver();
 		}
 		else {
 			player.manancaMonstru(this);

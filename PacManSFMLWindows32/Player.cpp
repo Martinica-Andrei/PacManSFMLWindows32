@@ -17,9 +17,9 @@ _animatie(joc, { &joc->texturi.pacman_1, &joc->texturi.pacman_2 }, 10) {
 	_textScorMancatMonstru.setCharacterSize(25);
 	_textScorMancatMonstru.setFillColor(sf::Color::Blue);
 
-	_oprireTimp.terminare();
-	_oprireTimp.secundePanaLaTerminare = 1;
-	_oprireTimp.startEfect = [this]() {
+	_eventOprireTimp.terminare();
+	_eventOprireTimp.secundePanaLaTerminare = 1;
+	_eventOprireTimp.startEfect = [this]() {
 		_joc->eFreeze = true;
 		forma().setFillColor({ 255, 255, 255, 0 });
 		_monstruMancat->forma().setFillColor({ 255, 255, 255, 0 });
@@ -27,19 +27,38 @@ _animatie(joc, { &joc->texturi.pacman_1, &joc->texturi.pacman_2 }, 10) {
 		_textScorMancatMonstru.setPosition(_monstruMancat->pos.x - _monstruMancat->scale.x, _monstruMancat->pos.y - _monstruMancat->scale.y);
 		_textScorMancatMonstru.setString(std::to_string(_mancatCombo));
 	};
-	_oprireTimp.sfarsitEfect = [this]() {
+	_eventOprireTimp.sfarsitEfect = [this]() {
 		forma().setFillColor({ 255, 255, 255, 255 });
 		_monstruMancat->forma().setFillColor({ 255, 255, 255, 255 });
 		_textScorMancatMonstru.setFillColor({ 255, 255, 255, 0 });
 		_joc->eFreeze = false;
 		_monstruMancat = nullptr;
 	};
+	_eventGameOver.terminare();
+	_eventGameOver.secundePanaLaTerminare = 2;
+	_eventGameOver.startEfect = [this]() {
+		_joc->eFreeze = true;
+		for (auto& monstru : _joc->monstrii) {
+			monstru->forma().setFillColor({255, 255, 255, 0});
+		}
+	};
+	_eventGameOver.updateEfect = [this]() {
+		forma().rotate(360 * _joc->timpDeLaUltimulFrame);
+		forma().setScale(scale.x - 10 * _joc->timpDeLaUltimulFrame, scale.y - 10 * _joc->timpDeLaUltimulFrame);
+	};
+	_eventGameOver.sfarsitEfect = [this]() {
+		_joc->eFreeze = false;
+		_joc->eGameOver = true;
+	};
 
-	hotarXStanga = scale.x / 2;
+	hotarXStanga = -scale.x / 2;
 	hotarXDreapta = joc->ecran()->getSize().x + scale.x / 2;
-
-	_velocitate = 400.f;
 }
+void Player::rulareEventGameOver() {
+	_eventGameOver.resetare();
+	_eventGameOver.update();
+}
+
 void Player::desenare() {
 	ObiectJoc::desenare();
 	_joc->ecran()->draw(_textScorMancatMonstru);
@@ -132,12 +151,13 @@ void Player::manancaMonstru(Monstru* monstru) {
 	if (poateMancaMonstru() == false) return;
 	monstru->respawn();
 	_monstruMancat = monstru;
-	_oprireTimp.resetare();
-	_oprireTimp.update();
+	_eventOprireTimp.resetare();
+	_eventOprireTimp.update();
 	_joc->hud->adaugareScor(_mancatCombo);
 	_mancatCombo *= 2;
 }
 
 void Player::updateCandEFreeze() {
-	_oprireTimp.update();
+	_eventOprireTimp.update();
+	_eventGameOver.update();
 }

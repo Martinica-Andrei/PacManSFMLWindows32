@@ -183,5 +183,5 @@ void Joc::sfarsit() {
 	monstrii.clear();
 	hud->resetare();
 	_nivel = 1;
-	eGameOver = false;d
+	eGameOver = false;
 }

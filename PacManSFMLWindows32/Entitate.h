@@ -1,9 +1,9 @@
 #pragma once
+#include <stack>
+#include <unordered_set>
 #include "ObiectJoc.h"
 #include "Constante.h"
 #include "Animatie.h"
-#include <stack>
-#include <unordered_set>
 class Entitate : public ObiectJoc {
 private:
 	DIR _directieCurenta = DIR::null;

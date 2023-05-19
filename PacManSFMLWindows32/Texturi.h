@@ -1,7 +1,7 @@
 #pragma once
-#include <SFML/Graphics.hpp>
 #include <vector>
 #include <string>
+#include <SFML/Graphics.hpp>
 class Texturi {
 private:
 	std::vector<std::vector<sf::Texture>> incarcareAtlas(const std::string& numeFisier, int randuri, int coloane, int lungime, int inaltime, int spatiu);

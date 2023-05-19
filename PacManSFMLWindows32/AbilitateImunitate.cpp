@@ -1,7 +1,7 @@
+#include <iostream>
 #include "AbilitateImunitate.h"
 #include "Monstru.h"
 #include "Joc.h"
-#include <iostream>
 AbilitateImunitate::AbilitateImunitate(Joc* joc) : EventTimp(joc) {
 	secundePanaLaTerminare = 5.08;
 	_eventSchimbareAnimatii.secundePanaLaTerminare = 0.18f;

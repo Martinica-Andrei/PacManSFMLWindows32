@@ -1,6 +1,6 @@
 #pragma once
-#include <SFML/Graphics.hpp>
 #include <vector>
+#include <SFML/Graphics.hpp>
 class Joc;
 class Animatie {
 private:

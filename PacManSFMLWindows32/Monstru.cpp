@@ -1,7 +1,7 @@
+#include <algorithm>
 #include "Monstru.h"	
 #include "Joc.h"
 #include "Player.h"
-#include <algorithm>
 Monstru::Monstru(Joc* joc, TIP_MONSTRU tipMonstru) : Entitate(joc), _animatieSus(joc), _animatieDreapta(joc), _animatieJos(joc), _animatieStanga(joc) {
 	const Texturi& tex = joc->texturi;
 	if (tipMonstru == TIP_MONSTRU::albastru) {

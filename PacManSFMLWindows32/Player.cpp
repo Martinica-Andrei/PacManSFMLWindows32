@@ -1,6 +1,6 @@
+#include <iostream>
 #include "Player.h"
 #include "Joc.h"
-#include <iostream>
 #include "Monstru.h"
 Player::Player(Joc* joc) : Entitate(joc),
 _animatie(joc, { &joc->texturi.pacman_1, &joc->texturi.pacman_2 }, 10) {

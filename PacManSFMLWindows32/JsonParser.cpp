@@ -1,6 +1,6 @@
-#include "JsonParser.h"
 #include <fstream>
 #include <iostream>
+#include "JsonParser.h"
 namespace {
 	
 	CopacJson* _parseCheie(string& jsonString, CopacJson* nod, int& index);

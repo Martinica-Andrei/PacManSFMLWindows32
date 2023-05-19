@@ -1,6 +1,6 @@
 #pragma once
-#include "ObiectJoc.h"
 #include <functional>
+#include "ObiectJoc.h"
 
 class Buton : public ObiectJoc {
 private:

@@ -1,9 +1,9 @@
 #pragma once
-#include <SFML/Graphics.hpp>
+#include <random>
 #include <vector>
+#include <SFML/Graphics.hpp>
 #include "Texturi.h"
 #include "Harta.h"
-#include <random>
 #include "MeniuPrincipal.h"
 #include "Hud.h"
 class ObiectJoc;
